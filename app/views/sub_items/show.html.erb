@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @sub_item.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @sub_item.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @sub_item.price %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @sub_item.item_id %>
+</p>
+
+<%= link_to 'Edit', edit_sub_item_path(@sub_item) %> |
+<%= link_to 'Back', sub_items_path %>
