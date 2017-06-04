@@ -45,9 +45,9 @@
 		<% if subitem.item_id == item.id %>
 		
 		<tr>		
-		<td><%= subitem.name%></td>
-		<td><%= subitem.description%></td>
-		<td>$<%= subitem.price%></td>
+		<td style="font-style: italic; padding-left: 3em;"><%= subitem.name%></td>
+		<td style="font-style: italic;"><%= subitem.description%></td>
+		<td style="font-style: italic;">$<%= subitem.price%></td>
 		</tr>
 		
 		<%end%>
