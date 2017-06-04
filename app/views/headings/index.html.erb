@@ -1,27 +1,112 @@
-<p id="notice"><%= notice %></p>
+	<body data-spy="scroll" data-target=".navbar" data-offset="50">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Lakes Cafe</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#about">About</a></li>
+      <% @sections.each do |section| %>
+      
+      <li><a href="#<%=  section.name %>"><%=  section.name %></a></li>
+      
+      <% end %>
+    </ul>
+    <img id="logo" src="lakesCafeLogo.png"></img>
+  
+</nav>
+<div class='container'>
+<br><br>
+<p class="jumbotron" id="about">Located in Perham Minnesota</p>
+<br><br>
+<h1 id="title" class="title">Lakes Cafe Menu</h1>
+<br><br><br>
+<% @headings.each do |heading| %>
 
-<h1>Headings</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @headings.each do |heading| %>
-      <tr>
-        <td><%= heading.name %></td>
-        <td><%= link_to 'Show', heading %></td>
-        <td><%= link_to 'Edit', edit_heading_path(heading) %></td>
-        <td><%= link_to 'Destroy', heading, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Heading', new_heading_path %>
+		<h1 class="page-header" id="<%=  heading.name %>" class="heading"><%=  heading.name %></h1>
+		<%  @sections.each do |section| %>
+		<% if section.heading_id == heading.id %>
+		
+		<h3 id="<%=  section.name %>" class="section container-fluid"><%= section.name %></h3>
+		<table class="table table-striped">
+			<tbody>
+			
+		
+		<% @items.each do |item|%>
+		<% if item.section_id == section.id %>
+		<tr>		
+		<td><%= item.name%></td>
+		<td><%= item.description%></td>
+		<td>$<%= item.price%></td>
+		</tr>
+		
+		<% @subitems.each do |subitem|%>
+		<% if subitem.item_id == item.id %>
+		
+		<tr>		
+		<td><%= subitem.name%></td>
+		<td><%= subitem.description%></td>
+		<td>$<%= subitem.price%></td>
+		</tr>
+		</tbody>
+		</table>
+		
+		<%end%>
+		<%end%>
+		<%end%>
+		<%end%>
+		<%end%>
+		<%end%>
+		<br><br><br>
+		<%end%>
+		</div>
+		</div>
+		<style>
+		  body {
+      position: relative; 
+  }
+		.wholeSection{
+			background-color: #97b59b;
+			display: block;
+		}
+			.title{
+				font-size: 4em;
+				background-color: #97b59b;
+				display: inline;
+				padding: 16px;
+				color: #2b5226;
+				
+					}
+			.heading{
+				font-size: 3em;
+				text-align: right;
+				color: #2b5226;
+			}
+			.section{
+				font-size: 2.5em;
+				text-align: center;
+				color: #2b5226;
+			}
+			.itemName{
+				font-size: 2em;
+				text-align: left;
+				color: #2b5226;
+			}
+			.itemDescription, .itemPrice{
+				font-size: 1em;
+				text-align: right;
+				color: #2b5226;
+			}
+			#logo{
+				position: fixed;
+				top: 2%;
+				right: 2%;
+			}
+			#navBar{
+				width: 100%;
+				margin-bottom: 16px;
+				margin-top: 8px;
+			}
+			
+		</style>
+		</body>

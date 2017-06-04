@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  root 'headings#index'
+  
   resources :sub_items
   resources :items
   resources :sections

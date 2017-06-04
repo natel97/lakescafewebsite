@@ -5,6 +5,9 @@ class HeadingsController < ApplicationController
   # GET /headings.json
   def index
     @headings = Heading.all
+    @sections = Section.all
+    @items = Item.all
+    @subitems = SubItem.all
   end
 
   # GET /headings/1
