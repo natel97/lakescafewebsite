@@ -38,7 +38,9 @@
 		<tr>		
 		<td><%= item.name%></td>
 		<td><%= item.description%></td>
+		<% if item.price.present? %>
 		<td>$<%= item.price%></td>
+		<%end%>
 		</tr>
 		
 		<% @subitems.each do |subitem|%>
