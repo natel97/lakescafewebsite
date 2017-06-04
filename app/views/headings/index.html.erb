@@ -27,8 +27,9 @@
 		<h1 class="page-header" id="<%=  heading.name %>" class="heading"><%=  heading.name %></h1>
 		<%  @sections.each do |section| %>
 		<% if section.heading_id == heading.id %>
-		
+		<div class="well well-lg">
 		<h3 id="<%=  section.name %>" class="section container-fluid"><%= section.name %></h3>
+		<p><%=section.description%></p>
 		<table class="table table-striped">
 			<tbody>
 			
@@ -58,6 +59,7 @@
 		<%end%>
 		</tbody>
 		</table>
+		</div>
 		<%end%>
 		<%end%>
 		<br><br><br>
