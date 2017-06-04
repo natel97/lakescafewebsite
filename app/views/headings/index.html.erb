@@ -15,12 +15,16 @@
   
 </nav>
 <div class='container'>
+	    	    <img id="logo" src="lakesCafeLogo.png"></img>
 <br><br>
-    <img id="logo" src="lakesCafeLogo.png"></img>
-
-<p class="jumbotron" id="about">Located in Perham Minnesota</p>
+    <div class="jumbotron" id="about">
+<h1 class="page-header" style="text-align: center;">Lakes Cafe</h1>
 <br><br>
-<h1 id="title" class="title">Lakes Cafe Menu</h1>
+<p>Located in Perham Minnesota</p>
+<button type="button" class="btn btn-primary btn-lg"><a style="color:black;" href="tel:+12183465920">Call Us!</a></button>
+</div>
+<br><br>
+<h1 id="title" class="title">Menu</h1>
 <br><br><br>
 <% @headings.each do |heading| %>
 
@@ -74,15 +78,6 @@
 			background-color: #97b59b;
 			display: block;
 		}
-			.title{
-				font-size: 3em;
-				background-color: #97b59b;
-				display: inline;
-				padding: 8px;
-				color: #2b5226;
-				border: 16px;
-				
-					}
 			.heading{
 				font-size: 3em;
 				text-align: right;
@@ -104,6 +99,7 @@
 				color: #2b5226;
 			}
 			#logo{
+				float: left;
 			}
 			#navBar{
 				width: 100%;
