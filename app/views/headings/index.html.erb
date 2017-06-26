@@ -1,84 +1,194 @@
 	<body data-spy="scroll" data-target=".navbar" data-offset="50">
-	<nav class="navbar navbar-inverse  navbar-collapse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">Lakes Cafe</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#about">About</a></li>
-      <% @sections.each do |section| %>
-      
-      <li><a href="#<%=  section.name %>"><%=  section.name %></a></li>
-      
-      <% end %>
-    </ul>
-  
-</nav>
-<div class='container'>
-	    	    <img id="logo" src="lakesCafeLogo.png"></img>
-<br><br>
-    <div class="jumbotron" id="about">
-<h1 class="page-header" style="text-align: center;">Lakes Cafe</h1>
-<br><br>
-<p>Located in Perham Minnesota</p>
-<button type="button" class="btn btn-primary btn-lg"><a style="color:black;" href="tel:+12183465920">Call Us!</a></button>
-<table> <tbody><tr jstcache="271" jsinstance="0"> <th jstcache="272" class="widget-pane-info-openhours-header widget-pane-info-openhours-today" jsan="7.widget-pane-info-openhours-header,7.widget-pane-info-openhours-today"> <div jstcache="273">Sunday</div> <div jstcache="274" class="" style="display:none"></div> </th> <td class="widget-pane-info-openhours-data"> <ul jstcache="275" class="widget-pane-info-openhours-interval widget-pane-info-openhours-today" jsan="7.widget-pane-info-openhours-interval,7.widget-pane-info-openhours-today"><li jstcache="276" jsinstance="*0">8AM–2PM</li></ul> <div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> <span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span> <span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> </div> </td> </tr><tr jstcache="271" jsinstance="1"> <th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> <div jstcache="273">Monday</div> <div jstcache="274" class="" style="display:none"></div> </th> <td class="widget-pane-info-openhours-data" jstcache="0"> <ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval"><li jstcache="276" jsinstance="*0">5:30AM–3PM</li></ul> <div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> <span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span> <span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> </div> </td> </tr><tr jstcache="271" jsinstance="2"> <th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> <div jstcache="273">Tuesday</div> <div jstcache="274" class="" style="display:none"></div> </th> <td class="widget-pane-info-openhours-data" jstcache="0"> <ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval"><li jstcache="276" jsinstance="*0">5:30AM–3PM</li></ul> <div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> <span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span> <span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> </div> </td> </tr><tr jstcache="271" jsinstance="3"> <th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> <div jstcache="273">Wednesday</div> <div jstcache="274" class="" style="display:none"></div> </th> <td class="widget-pane-info-openhours-data" jstcache="0"> <ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval"><li jstcache="276" jsinstance="*0">5:30AM–3PM</li></ul> <div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> <span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span> <span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> </div> </td> </tr><tr jstcache="271" jsinstance="4"> <th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> <div jstcache="273">Thursday</div> <div jstcache="274" class="" style="display:none"></div> </th> <td class="widget-pane-info-openhours-data" jstcache="0"> <ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval"><li jstcache="276" jsinstance="*0">5:30AM–3PM</li></ul> <div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> <span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span> <span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> </div> </td> </tr><tr jstcache="271" jsinstance="5"> <th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> <div jstcache="273">Friday</div> <div jstcache="274" class="" style="display:none"></div> </th> <td class="widget-pane-info-openhours-data" jstcache="0"> <ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval"><li jstcache="276" jsinstance="*0">5:30AM–3PM</li></ul> <div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> <span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span> <span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> </div> </td> </tr><tr jstcache="271" jsinstance="*6"> <th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> <div jstcache="273">Saturday</div> <div jstcache="274" class="" style="display:none"></div> </th> <td class="widget-pane-info-openhours-data" jstcache="0"> <ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval"><li jstcache="276" jsinstance="*0">5:30AM–3PM</li></ul> <div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> <span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span> <span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> </div> </td> </tr> </tbody></table>
-</div>
-<br><br>
-<h1 id="title" class="title">Menu</h1>
-<br><br><br>
-<% @headings.each do |heading| %>
+		<nav class="navbar navbar-inverse  navbar-collapse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">Lakes Cafe</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#about">About</a></li>
+					<% @sections.each do |section| %>
 
-		<h1 class="page-header" id="<%=  heading.name %>" class="heading"><%=  heading.name %></h1>
-		<%  @sections.each do |section| %>
-		<% if section.heading_id == heading.id %>
-		<div class="well well-lg">
-		<h3 id="<%=  section.name %>" class="section container-fluid"><%= section.name %></h3>
-		<p><%=section.description%></p>
-		<table class="table table-striped">
-			<tbody>
-			
-		
-		<% @items.each do |item|%>
-		<% if item.section_id == section.id %>
-		<tr>		
-		<td><%= item.name%></td>
-		<td><%= item.description%></td>
-		<% if item.price.present? %>
-		<td style="text-align: right;">$<%= item.price%></td>
-		<%end%>
-		</tr>
-		
-		<% @subitems.each do |subitem|%>
-		<% if subitem.item_id == item.id %>
-		
-		<tr>		
-		<td style="font-style: italic; padding-left: 3em;"><%= subitem.name%></td>
-		<td style="font-style: italic;"><%= subitem.description%></td>
-		<td style="font-style: italic; text-align: right;">$<%= subitem.price%></td>
-		</tr>
-		
-		<%end%>
-		<%end%>
-		<%end%>
-		<%end%>
-		</tbody>
-		</table>
-		</div>
-		<%end%>
-		<%end%>
-		<br><br><br>
-		<%end%>
-		</div>
+					<li><a href="#<%=  section.name %>"><%=  section.name %></a></li>
+
+					<% end %>
+				</ul>
+
+			</nav>
+			<div class='container'>
+				<img id="logo" src="lakesCafeLogo.png"></img>
+				<br><br>
+				<div class="jumbotron" id="about">
+					<h1 class="page-header" style="text-align: center;">Lakes Cafe</h1>
+					<br><br>
+					<p>Located in Perham Minnesota</p>
+					<button type="button" class="btn btn-primary btn-lg">
+						<a style="color:black;" href="tel:+12183465920">Call Us!</a>
+					</button>
+					<table> 
+						<tbody>
+							<tr jstcache="271" jsinstance="0"> 
+								<th jstcache="272" class="widget-pane-info-openhours-header widget-pane-info-openhours-today" jsan="7.widget-pane-info-openhours-header,7.widget-pane-info-openhours-today"> 
+									<div jstcache="273">Sunday</div> 
+									<div jstcache="274" class="" style="display:none"></div> 
+								</th> 
+								<td class="widget-pane-info-openhours-data"> 
+									<ul jstcache="275" class="widget-pane-info-openhours-interval widget-pane-info-openhours-today" jsan="7.widget-pane-info-openhours-interval,7.widget-pane-info-openhours-today"><li jstcache="276" jsinstance="*0">8AM–2PM</li>
+									</ul> 
+									<div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> 
+										<span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span> 
+										<span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> 
+									</div> 
+								</td> 
+							</tr>
+							<tr jstcache="271" jsinstance="1"> 
+								<th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> 
+									<div jstcache="273">Monday</div> 
+									<div jstcache="274" class="" style="display:none"></div> 
+								</th> <td class="widget-pane-info-openhours-data" jstcache="0"> 
+								<ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval">
+									<li jstcache="276" jsinstance="*0">5:30AM–3PM</li>
+								</ul> 
+								<div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> 
+									<span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span>
+									<span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> 
+								</div> 
+							</td> 
+						</tr>
+						<tr jstcache="271" jsinstance="2"> 
+							<th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> 
+								<div jstcache="273">Tuesday</div> 
+								<div jstcache="274" class="" style="display:none">
+								</div> 
+							</th> 
+							<td class="widget-pane-info-openhours-data" jstcache="0"> 
+								<ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval">
+									<li jstcache="276" jsinstance="*0">5:30AM–3PM</li>
+								</ul> 
+								<div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> 
+									<span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span> 
+									<span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> 
+								</div> 
+							</td> 
+						</tr>
+						<tr jstcache="271" jsinstance="3"> 
+							<th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> 
+								<div jstcache="273">Wednesday</div> 
+								<div jstcache="274" class="" style="display:none">
+								</div> 
+							</th> 
+							<td class="widget-pane-info-openhours-data" jstcache="0"> 
+								<ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval">
+									<li jstcache="276" jsinstance="*0">5:30AM–3PM</li>
+								</ul> 
+								<div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> 
+									<span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span> 
+									<span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> 
+								</div> </td> </tr><tr jstcache="271" jsinstance="4">
+								<th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> 
+									<div jstcache="273">Thursday</div> 
+									<div jstcache="274" class="" style="display:none"></div> 
+								</th> 
+								<td class="widget-pane-info-openhours-data" jstcache="0"> 
+									<ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval">
+										<li jstcache="276" jsinstance="*0">5:30AM–3PM</li>
+									</ul> 
+									<div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> 
+										<span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span> 
+										<span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> 
+									</div> 
+								</td> 
+							</tr>
+							<tr jstcache="271" jsinstance="5"> 
+								<th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> 
+									<div jstcache="273">Friday</div> 
+									<div jstcache="274" class="" style="display:none">
+									</div> 
+								</th> 
+								<td class="widget-pane-info-openhours-data" jstcache="0"> 
+									<ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval">
+										<li jstcache="276" jsinstance="*0">5:30AM–3PM</li>
+									</ul> 
+									<div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> 
+										<span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span> 
+										<span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> 
+									</div> 
+								</td> 
+							</tr>
+							<tr jstcache="271" jsinstance="*6"> 
+								<th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> 
+									<div jstcache="273">Saturday</div> 
+									<div jstcache="274" class="" style="display:none">
+									</div> 
+								</th> 
+								<td class="widget-pane-info-openhours-data" jstcache="0"> 
+									<ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval">
+										<li jstcache="276" jsinstance="*0">5:30AM–3PM</li>
+									</ul> 
+									<div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> 
+										<span jstcache="278" class="section-info-green" style="display:none"> Holiday hours 
+										</span> 
+										<span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span>
+									</div> 
+								</td>
+							</tr> 
+						</tbody>
+					</table>
+				</div>
+				<br><br>
+				<h1 id="title" class="title">Menu</h1>
+				<br><br><br>
+				<% @headings.each do |heading| %>
+
+				<h1 class="page-header" id="<%=  heading.name %>" class="heading"><%=  heading.name %></h1>
+				<%  @sections.each do |section| %>
+				<% if section.heading_id == heading.id %>
+				<div class="well well-lg">
+					<h3 id="<%=  section.name %>" class="section container-fluid"><%= section.name %></h3>
+					<p><%=section.description%></p>
+					<table class="table table-striped">
+						<tbody>
+
+
+							<% @items.each do |item|%>
+							<% if item.section_id == section.id %>
+							<tr>		
+								<td><%= item.name%></td>
+								<td><%= item.description%></td>
+								<% if item.price.present? %>
+								<td style="text-align: right;">$<%= item.price%></td>
+								<%end%>
+							</tr>
+
+							<% @subitems.each do |subitem|%>
+							<% if subitem.item_id == item.id %>
+
+							<tr>		
+								<td style="font-style: italic; padding-left: 3em;"><%= subitem.name%></td>
+								<td style="font-style: italic;"><%= subitem.description%></td>
+								<td style="font-style: italic; text-align: right;">$<%= subitem.price%></td>
+							</tr>
+
+							<%end%>
+							<%end%>
+							<%end%>
+							<%end%>
+						</tbody>
+					</table>
+				</div>
+				<%end%>
+				<%end%>
+				<br><br><br>
+				<%end%>
+			</div>
 		</div>
 		<style>
-		  body {
-      position: relative; 
-  }
-		.wholeSection{
-			background-color: #97b59b;
-			display: block;
-		}
+			body {
+				position: relative; 
+			}
+			.wholeSection{
+				background-color: #97b59b;
+				display: block;
+			}
 			.heading{
 				font-size: 3em;
 				text-align: right;
@@ -109,4 +219,4 @@
 			}
 			
 		</style>
-		</body>
+	</body>
