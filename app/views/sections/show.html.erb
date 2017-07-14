@@ -1,0 +1,68 @@
+<style>
+	.parallax { 
+		/* The image used */
+		background-image: url("<%= @section.imageURL %>");
+
+		/* Set a specific height */
+		height: 500px; 
+
+		/* Create the parallax scrolling effect */
+		background-attachment: fixed;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+</style>
+<div class='container container-fluid'>
+<h1 class="page-header" style="text-align: center;"><%= @section.name %></h1>
+<div class="parallax"> </div>
+<div style="height:1000px;background-color:white;font-size:36px">
+
+<div class="well well-sm">
+<br>
+<h1><% @section.description %></h1>
+	<table class="table table-striped">
+		<tbody>
+			<% @section.items.each do |item|%>
+			<tr>		
+				<td><p><%= item.name%></p></td>
+				<td><%= item.description%></td>
+				<% if item.price.present? %>
+				<td style="text-align: right;">$<%= item.price%></td>
+				<%else%>
+				<td style="font-style: italic; text-align: right;"> </td>
+				<%end%>
+			</tr>
+
+			<% item.sub_items.each do |subitem|%>
+			<tr>		
+				<td style="font-style: italic; padding-left: 3em;"><%= subitem.name%></td>
+				<td style="font-style: italic;"><%= subitem.description%></td>
+				<% if subitem.price.present? %>
+				<td style="font-style: italic; text-align: right;">$<%= subitem.price%></td>
+				<%else%>
+				<td style="font-style: italic; text-align: right;"> </td>
+				<%end%>
+			</tr>
+
+			<%end%>
+			<%end%>
+		</tbody>
+	</table>
+</div>
+<br><br>
+<h1 class="page-header">Other <%= @section.heading.name %> Items</h1>
+<br><br>
+<% @section.heading.sections.each do |section|%>
+ <div class="col-md-4">
+        <div class="thumbnail">
+          <%=link_to( image_tag(section.imageURL), section_path(section), :class=>"img-rounded") %>
+            <div class="caption">
+              <h3 style="text-align: center;"><%= section.name %></h3>
+            </div>
+          </a>
+        </div>
+      </div>
+      <%end%>
+</div>
+</div>

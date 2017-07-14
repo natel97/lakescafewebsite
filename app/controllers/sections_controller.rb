@@ -5,11 +5,13 @@ class SectionsController < ApplicationController
   # GET /sections.json
   def index
     @sections = Section.all
+    @headings = Heading.all
   end
 
   # GET /sections/1
   # GET /sections/1.json
   def show
+    @section = Section.find(params[:id])
   end
 
   # GET /sections/new
