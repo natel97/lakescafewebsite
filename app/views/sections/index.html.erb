@@ -130,8 +130,9 @@
   </div>
   <br><br>
   <h1 id="title" class="title">Menu</h1>
-  <div>
+
   <% @headings.each do |heading| %>
+  <div>
   <h1 class="page-header" id="<%=  heading.name %>" class="heading"><%=  heading.name %></h1>
   <% a=2 %>
   <% heading.sections.each do |section| %>
