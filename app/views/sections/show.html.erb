@@ -14,86 +14,88 @@
 	}
 </style>
 
-    <div style="text-align: center;">
-     <button type="button" class="btn btn-primary btn-lg" style="float: left; margin-left: 128px; margin-top: 32px; display: inline-block;">
-      <a style="color:black;" href="/">Back</a>
-    </button>
+<div style="text-align: center;">
+	<button type="button" class="btn btn-primary btn-lg" style="float: left; margin-left: 128px; margin-top: 32px; display: inline-block;">
+		<a style="color:black;" href="/">Back</a>
+	</button>
 	<h1 class="page-header" style="text-align: center; display: inline-block;"><%= @section.name %></h1>
+</div>
+<div class="parallax"> </div>
+<div style="height:128px;background-color:white;"></div>
+<br>
+<div class='container-fluid'>
+	<div class="well well-sm">
+		<br>
+		<h1><% @section.description %></h1>
+		<table class="table table-striped">
+			<tbody>
+				<% @section.items.each do |item|%>
+				<tr>		
+					<td><p><%= item.name%></p></td>
+					<td><%= item.description%></td>
+					<% if item.price.present? %>
+					<td style="text-align: right;">$<%= item.price%></td>
+					<%else%>
+					<td style="font-style: italic; text-align: right;"> </td>
+					<%end%>
+				</tr>
+
+				<% item.sub_items.each do |subitem|%>
+				<tr>		
+					<td style="font-style: italic; padding-left: 3em;"><%= subitem.name%></td>
+					<td style="font-style: italic;"><%= subitem.description%></td>
+					<% if subitem.price.present? %>
+					<td style="font-style: italic; text-align: right;">$<%= subitem.price%></td>
+					<%else%>
+					<td style="font-style: italic; text-align: right;"> </td>
+					<%end%>
+				</tr>
+
+				<%end%>
+				<%end%>
+			</tbody>
+		</table>
 	</div>
-	<div class="parallax"> </div>
-	<div style="height:128px;background-color:white;"></div>
-	<br>
-		<div class='container-fluid'>
-		<div class="well well-sm">
-			<br>
-			<h1><% @section.description %></h1>
-			<table class="table table-striped">
-				<tbody>
-					<% @section.items.each do |item|%>
-					<tr>		
-						<td><p><%= item.name%></p></td>
-						<td><%= item.description%></td>
-						<% if item.price.present? %>
-						<td style="text-align: right;">$<%= item.price%></td>
-						<%else%>
-						<td style="font-style: italic; text-align: right;"> </td>
-						<%end%>
-					</tr>
-
-					<% item.sub_items.each do |subitem|%>
-					<tr>		
-						<td style="font-style: italic; padding-left: 3em;"><%= subitem.name%></td>
-						<td style="font-style: italic;"><%= subitem.description%></td>
-						<% if subitem.price.present? %>
-						<td style="font-style: italic; text-align: right;">$<%= subitem.price%></td>
-						<%else%>
-						<td style="font-style: italic; text-align: right;"> </td>
-						<%end%>
-					</tr>
-
-					<%end%>
-					<%end%>
-				</tbody>
-			</table>
+	<br><br>
+	<h1 class="page-header">Other <%= @section.heading.name %> Items</h1>
+	<br><br>
+	<% a=2 %>
+	<div>
+		<% @section.heading.sections.each do |section| %>
+		<% if section.visible? %>
+		<% a += 1 %>
+		<% if (a == 3) %>
+		<br>
+	</div>
+	<div class="row">
+		<% a = 0 %>
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<% if section.imageURL.present? %>
+				<%=link_to( image_tag(section.imageURL), section_path(section), :class=>"setFixed img-rounded") %>
+				<% else %>
+				<%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
+				<% end %>
+				<div class="caption">
+					<h3 style="text-align: center;"><%= section.name %></h3>
+				</div>
+			</div>
 		</div>
-		<br><br>
-		<h1 class="page-header">Other <%= @section.heading.name %> Items</h1>
-		<br><br>
-	 <% a=2 %>
-	 <div>
-  <% @section.heading.sections.each do |section| %>
-  <% a += 1 %>
-  <% if (a == 3) %>
-  <br>
-  </div>
-  <div class="row">
-    <% a = 0 %>
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <% if section.imageURL.present? %>
-        <%=link_to( image_tag(section.imageURL), section_path(section), :class=>"setFixed img-rounded") %>
-        <% else %>
-        <%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
-        <% end %>
-        <div class="caption">
-          <h3 style="text-align: center;"><%= section.name %></h3>
-        </div>
-    </div>
-  </div>
-  <% else %>
-  <div class="col-md-4">
-    <div class="thumbnail">
-      <% if section.imageURL.present? %>
-      <%=link_to( image_tag(section.imageURL), section_path(section), :class=>"setFixed img-rounded") %>
-      <% else %>
-      <%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
-      <% end %>
-      <div class="caption">
-        <h3 style="text-align: center;"><%= section.name %></h3>
-      </div>
-  </div>
-</div>
-<%end%>
-<%end%>
-</div>
+		<% else %>
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<% if section.imageURL.present? %>
+				<%=link_to( image_tag(section.imageURL), section_path(section), :class=>"setFixed img-rounded") %>
+				<% else %>
+				<%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
+				<% end %>
+				<div class="caption">
+					<h3 style="text-align: center;"><%= section.name %></h3>
+				</div>
+			</div>
+		</div>
+		<%end%>
+		<%end%>
+		<%end%>
+	</div>
 </div>
