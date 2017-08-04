@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root 'sections#index'
   
-  resources :sub_items
-  resources :items
   resources :sections
-  resources :headings
+  get 'onepage', to: 'headings#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

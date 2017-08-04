@@ -20,7 +20,7 @@
 				<div class="jumbotron" id="about">
 					<h1 class="page-header" style="text-align: center;">Lakes Cafe</h1>
 					<br><br>
-					<p>Located in Perham Minnesota</p>
+					<p>Located in Perham Minnesota. It's a great place for groups of all sizes! We even have a room in the back that is perfect for private parties. Please call ahead to ensure availability.</p>
 					<button type="button" class="btn btn-primary btn-lg">
 						<a style="color:black;" href="tel:+12183465920">Call Us!</a>
 					</button>
@@ -141,7 +141,7 @@
 
 				<h1 class="page-header" id="<%=  heading.name %>" class="heading"><%=  heading.name %></h1>
 				<%  @sections.each do |section| %>
-				<% if section.heading_id == heading.id %>
+				<% if section.heading_id == heading.id && section.visible?%>
 				<div class="well well-lg">
 					<h3 id="<%=  section.name %>" class="section container-fluid"><%= section.name %></h3>
 					<p><%=section.description%></p>
