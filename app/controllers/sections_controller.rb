@@ -12,6 +12,9 @@ class SectionsController < ApplicationController
   # GET /sections/1.json
   def show
     @section = Section.find(params[:id])
+    if !@section.visible
+      redirect_to sections_url
+    end
   end
 
   # GET /sections/new

@@ -1,11 +1,22 @@
 <style>
-  .setFixed{
-    width: auto;          
-    image-height: 512px;           
-    margin: 20px;   
+  .setFixed {
+    width: auto;
+    image-height: 512px;
+    margin: 20px;
   }
-  body{
+  body {
     overflow: break-line;
+  }
+  #hours {
+    text-align: right;
+    font-size: 1.5em;
+  }
+  .time {
+    padding-left: 32px;
+  }
+  #hour-tag{
+    text-decoration: underline;
+    padding-left: 17%;
   }
 </style>
 <div class='container'>
@@ -14,163 +25,87 @@
   <div class="jumbotron" id="about">
     <h1 class="page-header" style="text-align: center;">Lakes Cafe</h1>
     <br><br>
-        <p>Located in Perham Minnesota. It's a great place for groups of all sizes! We even have a room in the back that is perfect for private parties. Please call ahead to ensure availability.</p>
+    <p>Located in Perham Minnesota. It's a great place for groups of all sizes! We even have a room in the back that is perfect for private parties. Please call ahead to ensure availability.</p>
     <button type="button" class="btn btn-primary btn-lg">
       <a style="color:black;" href="tel:+12183465920">Call Us!</a>
     </button>
-    <table> 
-      <tbody>
-        <tr jstcache="271" jsinstance="0"> 
-          <th jstcache="272" class="widget-pane-info-openhours-header widget-pane-info-openhours-today" jsan="7.widget-pane-info-openhours-header,7.widget-pane-info-openhours-today"> 
-            <div jstcache="273">Sunday</div> 
-            <div jstcache="274" class="" style="display:none"></div> 
-          </th> 
-          <td class="widget-pane-info-openhours-data"> 
-            <ul jstcache="275" class="widget-pane-info-openhours-interval widget-pane-info-openhours-today" jsan="7.widget-pane-info-openhours-interval,7.widget-pane-info-openhours-today"><li jstcache="276" jsinstance="*0">8AM–2PM</li>
-            </ul> 
-            <div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> 
-              <span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span> 
-              <span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> 
-            </div> 
-          </td> 
-        </tr>
-        <tr jstcache="271" jsinstance="1"> 
-          <th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> 
-            <div jstcache="273">Monday</div> 
-            <div jstcache="274" class="" style="display:none"></div> 
-          </th> <td class="widget-pane-info-openhours-data" jstcache="0"> 
-          <ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval">
-            <li jstcache="276" jsinstance="*0">5:30AM–3PM</li>
-          </ul> 
-          <div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> 
-            <span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span>
-            <span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> 
-          </div> 
-        </td> 
-      </tr>
-      <tr jstcache="271" jsinstance="2"> 
-        <th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> 
-          <div jstcache="273">Tuesday</div> 
-          <div jstcache="274" class="" style="display:none">
-          </div> 
-        </th> 
-        <td class="widget-pane-info-openhours-data" jstcache="0"> 
-          <ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval">
-            <li jstcache="276" jsinstance="*0">5:30AM–3PM</li>
-          </ul> 
-          <div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> 
-            <span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span> 
-            <span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> 
-          </div> 
-        </td> 
-      </tr>
-      <tr jstcache="271" jsinstance="3"> 
-        <th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> 
-          <div jstcache="273">Wednesday</div> 
-          <div jstcache="274" class="" style="display:none">
-          </div> 
-        </th> 
-        <td class="widget-pane-info-openhours-data" jstcache="0"> 
-          <ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval">
-            <li jstcache="276" jsinstance="*0">5:30AM–3PM</li>
-          </ul> 
-          <div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> 
-            <span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span> 
-            <span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> 
-          </div> </td> </tr><tr jstcache="271" jsinstance="4">
-          <th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> 
-            <div jstcache="273">Thursday</div> 
-            <div jstcache="274" class="" style="display:none"></div> 
-          </th> 
-          <td class="widget-pane-info-openhours-data" jstcache="0"> 
-            <ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval">
-              <li jstcache="276" jsinstance="*0">5:30AM–3PM</li>
-            </ul> 
-            <div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> 
-              <span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span> 
-              <span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> 
-            </div> 
-          </td> 
-        </tr>
-        <tr jstcache="271" jsinstance="5"> 
-          <th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> 
-            <div jstcache="273">Friday</div> 
-            <div jstcache="274" class="" style="display:none">
-            </div> 
-          </th> 
-          <td class="widget-pane-info-openhours-data" jstcache="0"> 
-            <ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval">
-              <li jstcache="276" jsinstance="*0">5:30AM–3PM</li>
-            </ul> 
-            <div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> 
-              <span jstcache="278" class="section-info-green" style="display:none"> Holiday hours </span> 
-              <span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span> 
-            </div> 
-          </td> 
-        </tr>
-        <tr jstcache="271" jsinstance="*6"> 
-          <th jstcache="272" class="widget-pane-info-openhours-header" jsan="7.widget-pane-info-openhours-header"> 
-            <div jstcache="273">Saturday</div> 
-            <div jstcache="274" class="" style="display:none">
-            </div> 
-          </th> 
-          <td class="widget-pane-info-openhours-data" jstcache="0"> 
-            <ul jstcache="275" class="widget-pane-info-openhours-interval" jsan="7.widget-pane-info-openhours-interval">
-              <li jstcache="276" jsinstance="*0">5:30AM–3PM</li>
-            </ul> 
-            <div jstcache="277" class="widget-pane-info-openhours-special" style="display:none"> 
-              <span jstcache="278" class="section-info-green" style="display:none"> Holiday hours 
-              </span> 
-              <span jstcache="279" class="section-info-yellow" style="display:none"> Hours might differ </span>
-            </div> 
-          </td>
-        </tr> 
-      </tbody>
-    </table>
+    <h3 id="hour-tag">Hours</h3>
+    <div id="hours">
+      <table>
+        <tbody>
+          <tr>
+            <td>Sunday</td>
+            <td class="time">8AM - 2PM</td>
+          </tr>
+          <tr>
+            <td>Monday</td>
+            <td class="time">5:30AM - 3PM</td>
+          </tr>
+          <tr>
+            <td>Tuesday</td>
+            <td class="time">5:30AM - 3PM</td>
+          </tr>
+          <tr>
+            <td>Wednesday</td>
+            <td class="time">5:30AM - 3PM</td>
+          </tr>
+          <tr>
+            <td>Thursday</td>
+            <td class="time">5:30AM - 3PM</td>
+          </tr>
+          <tr>
+            <td>Friday</td>
+            <td class="time">5:30AM - 3PM</td>
+          </tr>
+          <tr>
+            <td>Saturday</td>
+            <td class="time">5:30AM - 3PM</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
   <br><br>
   <h1 id="title" class="title">Menu</h1>
 
   <% @headings.each do |heading| %>
-  <div>
-  <h1 class="page-header" id="<%=  heading.name %>" class="heading"><%=  heading.name %></h1>
-  <% a=2 %>
-  <% heading.sections.each do |section| %>
-  <% if (section.visible?) %>
-    <% a += 1 %>
-    <% if (a == 3) %>
-    <br>
-    </div>
-    <div class="row">
-      <% a = 0 %>
-      <div class="col-md-4">
-        <div class="thumbnail">
-          <% if section.imageURL.present? %>
-          <%=link_to( image_tag(section.imageURL), section_path(section), :class=>"setFixed img-rounded") %>
-          <% else %>
-          <%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
-          <% end %>
-          <div class="caption">
-            <h3 style="text-align: center;"><%= section.name %></h3>
+    <div>
+      <h1 class="heading" id="<%=  heading.name %>"><%= heading.name %></h1>
+      <% a=2 %>
+        <% heading.sections.where(:visible => true).each do |section| %>
+          <% a += 1 %>
+            <% if (a == 3) %>
+              <br>
+            </div>
+            <div class="row">
+              <% a = 0 %>
+                <div class="col-md-4">
+                  <div class="thumbnail">
+                    <% if section.imageURL.present? %>
+                      <%=link_to( image_tag(section.imageURL), section_path(section), :class=>"setFixed img-rounded") %>
+                    <% else %>
+                      <%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
+                    <% end %>
+                    <div class="caption">
+                      <h3 style="text-align: center;"><%= section.name %></h3>
+                    </div>
+                  </div>
+                </div>
+              <% else %>
+                <div class="col-md-4">
+                  <div class="thumbnail">
+                    <% if section.imageURL.present? %>
+                      <%=link_to( image_tag(section.imageURL), section_path(section), :class=>"setFixed img-rounded") %>
+                    <% else %>
+                      <%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
+                    <% end %>
+                    <div class="caption">
+                      <h3 style="text-align: center;"><%= section.name %></h3>
+                    </div>
+                  </div>
+                </div>
+              <%end%>
+            <%end%>
           </div>
-      </div>
-    </div>
-    <% else %>
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <% if section.imageURL.present? %>
-        <%=link_to( image_tag(section.imageURL), section_path(section), :class=>"setFixed img-rounded") %>
-        <% else %>
-        <%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
-        <% end %>
-        <div class="caption">
-          <h3 style="text-align: center;"><%= section.name %></h3>
-        </div>
-    </div>
-  </div>
-<%end%>
-<%end%>
-<%end%>
-</div>
-<%end%>
-<%= link_to("View as single page", onepage_url()) %>
+        <%end%>
+        <%= link_to("View as single page", onepage_url()) %>
