@@ -10,8 +10,30 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
+	.thumbnail a img{
+		max-height: 512px;
+	}
+	#space{
+		margin-top: 55vh;
+		width: 100%;
+	}
 </style>
+<script>
 
+$(document).ready(function () {
+    $('html, body').animate({
+        scrollTop: $('#scroll-to-me').offset().top
+    }, 1000);
+		setTimeout(() => {$("#space").css("display", "none");
+		$('html, body').animate({
+        scrollTop: $('#scroll-to-me').offset().top
+    }, 0)}, 2000)
+});
+</script>
+<div id="space">
+</div>
+<div id="scroll-to-me">
+</div>
 <div style="text-align: center;">
 	<button type="button" class="btn btn-primary btn-lg" style="float: left; margin-left: 128px; margin-top: 32px; display: inline-block;">
 		<a style="color:black;" href="/">Back</a>

@@ -1,0 +1,2 @@
+class CarouselImage < ApplicationRecord
+end

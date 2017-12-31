@@ -65,87 +65,103 @@
 			</div>
 			<br><br>
 			<h1 id="title" class="title">Menu</h1>
+			<hr>
 			<br><br><br>
 			<% @headings.each do |heading| %>
-
 				<h1 class="heading" id="<%=  heading.name %>"><%= heading.name %></h1>
-				<%  heading.sections.where(:visible => true).each do |section| %>
-					<div class="well well-lg">
-						<h3 id="<%=  section.name %>" class="section container-fluid"><%= section.name %></h3>
-						<p><%=section.description%></p>
-						<table class="table table-striped">
-							<tbody>
-								<% section.items.each do |item|%>
-									<tr>
-										<td><%= item.name%></td>
-										<td><%= item.description%></td>
-										<% if item.price.present? %>
-											<td style="text-align: right;">$<%= item.price%></td>
-										<%end%>
-									</tr>
-									<% item.sub_items.each do |subitem|%>
+				<div class="single-heading">
+					<%  heading.sections.where(:visible => true).each do |section| %>
+						<div class="well well-lg">
+							<h3 id="<%=  section.name %>" class="section"><%= section.name %></h3>
+							<p><%=section.description%></p>
+							<table class="table table-striped">
+								<tbody>
+									<% section.items.each do |item|%>
 										<tr>
-											<td style="font-style: italic; padding-left: 3em;"><%= subitem.name%></td>
-											<td style="font-style: italic;"><%= subitem.description%></td>
-											<td style="font-style: italic; text-align: right;">$<%= subitem.price%></td>
+											<td><%= item.name%></td>
+											<td><%= item.description%></td>
+											<% if item.price.present? %>
+												<td style="text-align: right;">$<%= item.price%></td>
+											<%end%>
 										</tr>
+										<% item.sub_items.each do |subitem|%>
+											<tr>
+												<td style="font-style: italic; padding-left: 3em;"><%= subitem.name%></td>
+												<td style="font-style: italic;"><%= subitem.description%></td>
+												<td style="font-style: italic; text-align: right;">$<%= subitem.price%></td>
+											</tr>
+										<%end%>
 									<%end%>
-								<%end%>
-							<%end%>
-						</tbody>
-					</table>
+								</tbody>
+							</table>
+						</div>
+					<%end%>
 				</div>
 				<br><br><br>
 			<%end%>
+
 		</div>
 	</div>
-	<style>
-		body {
-			position: relative;
+</div>
+<style>
+	body {
+		position: relative;
+	}
+	.wholeSection {
+		background-color: #97b59b;
+		display: block;
+	}
+	.heading {
+		font-size: 3em;
+		text-align: right;
+		color: #2b5226;
+	}
+	.section {
+		font-size: 2.5em;
+		text-align: center;
+		color: #2b5226;
+	}
+	.itemName {
+		font-size: 2em;
+		text-align: left;
+		color: #2b5226;
+	}
+	.itemDescription,
+	.itemPrice {
+		font-size: 1em;
+		text-align: right;
+		color: #2b5226;
+	}
+	#logo {
+		float: left;
+	}
+	#navBar {
+		width: 100%;
+		margin-bottom: 16px;
+		margin-top: 8px;
+	}
+	#hours {
+		text-align: right;
+		font-size: 1.5em;
+	}
+	.time {
+		padding-left: 32px;
+	}
+	#hour-tag {
+		text-decoration: underline;
+		padding-left: 17%;
+	}
+	@media print {
+		.single-heading {
+			display: flex;
+			flex-direction: row;
+			align-items: flex-start;
+			justify-content: flex-start;
+			flex-wrap: wrap;
 		}
-		.wholeSection {
-			background-color: #97b59b;
-			display: block;
+		.section-container .well {
+			max-width: 33% !important;
 		}
-		.heading {
-			font-size: 3em;
-			text-align: right;
-			color: #2b5226;
-		}
-		.section {
-			font-size: 2.5em;
-			text-align: center;
-			color: #2b5226;
-		}
-		.itemName {
-			font-size: 2em;
-			text-align: left;
-			color: #2b5226;
-		}
-		.itemDescription,
-		.itemPrice {
-			font-size: 1em;
-			text-align: right;
-			color: #2b5226;
-		}
-		#logo {
-			float: left;
-		}
-		#navBar {
-			width: 100%;
-			margin-bottom: 16px;
-			margin-top: 8px;
-		}
-		#hours {
-			text-align: right;
-			font-size: 1.5em;
-		}
-		.time {
-			padding-left: 32px;
-		}
-		#hour-tag{
-			text-decoration: underline;
-			padding-left: 17%;
-		}
-	</style>
+	}
+</style>
 </body>

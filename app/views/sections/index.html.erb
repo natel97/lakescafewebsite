@@ -14,98 +14,158 @@
   .time {
     padding-left: 32px;
   }
-  #hour-tag{
+  #hour-tag {
     text-decoration: underline;
     padding-left: 17%;
   }
+  .item img{
+    object-fit:cover;
+    height:450px !important;
+    width:100%;
+  }
+.setFixed{
+  height: 480px !important;
+}
+.thumbnail{
+  border: 0px solid white;
+  filter: none;
+  transition: filter 1s;
+}
+.thumbnail:hover a img{
+  filter: blur(3px);
+  filter: brightness(.7);
+  transition: filter 1s;
+}
+.thumbnail a img{
+  transition: filter 1s;
+  max-height: 512px;
+}
+  .c-desc{
+    background-color: rgba(0,0,0,.5);
+  }
 </style>
 <div class='container'>
-  <img id="logo" src="lakesCafeLogo.png" style="float: left;"></img>
-  <br><br>
-  <div class="jumbotron" id="about">
-    <h1 class="page-header" style="text-align: center;">Lakes Cafe</h1>
-    <br><br>
-    <p>Located in Perham Minnesota. It's a great place for groups of all sizes! We even have a room in the back that is perfect for private parties. Please call ahead to ensure availability.</p>
-    <button type="button" class="btn btn-primary btn-lg">
-      <a style="color:black;" href="tel:+12183465920">Call Us!</a>
-    </button>
-    <h3 id="hour-tag">Hours</h3>
-    <div id="hours">
-      <table>
-        <tbody>
-          <tr>
-            <td>Sunday</td>
-            <td class="time">8AM - 2PM</td>
-          </tr>
-          <tr>
-            <td>Monday</td>
-            <td class="time">5:30AM - 3PM</td>
-          </tr>
-          <tr>
-            <td>Tuesday</td>
-            <td class="time">5:30AM - 3PM</td>
-          </tr>
-          <tr>
-            <td>Wednesday</td>
-            <td class="time">5:30AM - 3PM</td>
-          </tr>
-          <tr>
-            <td>Thursday</td>
-            <td class="time">5:30AM - 3PM</td>
-          </tr>
-          <tr>
-            <td>Friday</td>
-            <td class="time">5:30AM - 3PM</td>
-          </tr>
-          <tr>
-            <td>Saturday</td>
-            <td class="time">5:30AM - 3PM</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <br><br>
-  <h1 id="title" class="title">Menu</h1>
-
-  <% @headings.each do |heading| %>
-    <div>
-      <h1 class="heading" id="<%=  heading.name %>"><%= heading.name %></h1>
-      <% a=2 %>
-        <% heading.sections.where(:visible => true).each do |section| %>
-          <% a += 1 %>
-            <% if (a == 3) %>
-              <br>
+  <br/><br/><br/>
+  <% if @images.count != 0 %>
+    <div id="lakesCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <% x = 0 %>
+        <% @images.each do |image| %>
+          <% if image.id == @images.first.id %>
+            <li data-target="#lakesCarousel" data-slide-to="<%= x %>" class="active"></li>
+          <% else %>
+            <li data-target="#lakesCarousel" data-slide-to="<%= x %>"></li>
+          <% end %>
+          <% x = x + 1 %>
+        <% end %>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <% @images.each do |image| %>
+          <% if image.id == @images.first.id %>
+            <div class="carousel-item item active">
+            <% else %>
+              <div class="carousel-item item">
+              <% end %>
+              <img class="d-block img-fluid carousel-image" src="<%= image.image_url %>" alt="<%= image.image_url %>">
+              <% if !image.description.empty? %>
+                <div class="carousel-caption d-none d-md-block c-desc">
+                  <h3><%= image.description %></h3>
+                </div>
+              <% end %>
             </div>
-            <div class="row">
-              <% a = 0 %>
-                <div class="col-md-4">
-                  <div class="thumbnail">
-                    <% if section.imageURL.present? %>
-                      <%=link_to( image_tag(section.imageURL), section_path(section), :class=>"setFixed img-rounded") %>
-                    <% else %>
-                      <%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
-                    <% end %>
-                    <div class="caption">
-                      <h3 style="text-align: center;"><%= section.name %></h3>
+          <% end %>
+        </div>
+        <a class="carousel-control left" href="#lakesCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#lakesCarousel" data-slide="next">&rsaquo;</a>
+      </div>
+    <% end %>
+
+    <img id="logo" src="lakesCafeLogo.png" style="float: left;"></img>
+    <br><br>
+    <div class="jumbotron" id="about">
+      <h1 class="page-header" style="text-align: center;">Lakes Cafe</h1>
+      <br><br>
+      <p>Located in Perham Minnesota. It's a great place for groups of all sizes! We even have a room in the back that is perfect for private parties. Please call ahead to ensure availability.</p>
+      <button type="button" class="btn btn-primary btn-lg">
+        <a style="color:black;" href="tel:+12183465920">Call Us!</a>
+      </button>
+      <h3 id="hour-tag">Hours</h3>
+      <div id="hours">
+        <table>
+          <tbody>
+            <tr>
+              <td>Sunday</td>
+              <td class="time">8AM - 2PM</td>
+            </tr>
+            <tr>
+              <td>Monday</td>
+              <td class="time">5:30AM - 3PM</td>
+            </tr>
+            <tr>
+              <td>Tuesday</td>
+              <td class="time">5:30AM - 3PM</td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td class="time">5:30AM - 3PM</td>
+            </tr>
+            <tr>
+              <td>Thursday</td>
+              <td class="time">5:30AM - 3PM</td>
+            </tr>
+            <tr>
+              <td>Friday</td>
+              <td class="time">5:30AM - 3PM</td>
+            </tr>
+            <tr>
+              <td>Saturday</td>
+              <td class="time">5:30AM - 3PM</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br><br>
+    <h1 id="title" class="title">Menu</h1>
+    <hr>
+    <% @headings.each do |heading| %>
+      <div>
+        <h1 class="heading" id="<%=  heading.name %>"><%= heading.name %></h1>
+        <% a=2 %>
+          <% heading.sections.where(:visible => true).each do |section| %>
+            <% a += 1 %>
+              <% if (a == 3) %>
+                <br>
+              </div>
+              <div class="row">
+                <% a = 0 %>
+                  <div class="col-md-4">
+                    <div class="thumbnail">
+                      <% if section.imageURL.present? %>
+                        <%=link_to( image_tag(section.imageURL), section_path(section), :class=>"setFixed img-rounded") %>
+                      <% else %>
+                        <%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
+                      <% end %>
+                      <div class="caption">
+                        <h3 style="text-align: center;"><%= section.name %></h3>
+                      </div>
                     </div>
                   </div>
-                </div>
-              <% else %>
-                <div class="col-md-4">
-                  <div class="thumbnail">
-                    <% if section.imageURL.present? %>
-                      <%=link_to( image_tag(section.imageURL), section_path(section), :class=>"setFixed img-rounded") %>
-                    <% else %>
-                      <%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
-                    <% end %>
-                    <div class="caption">
-                      <h3 style="text-align: center;"><%= section.name %></h3>
+                <% else %>
+                  <div class="col-md-4">
+                    <div class="thumbnail">
+                      <% if section.imageURL.present? %>
+                        <%=link_to( image_tag(section.imageURL), section_path(section), :class=>"setFixed img-rounded") %>
+                      <% else %>
+                        <%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
+                      <% end %>
+                      <div class="caption">
+                        <h3 style="text-align: center;"><%= section.name %></h3>
+                      </div>
                     </div>
                   </div>
-                </div>
+                <%end%>
               <%end%>
-            <%end%>
-          </div>
-        <%end%>
-        <%= link_to("View as single page", onepage_url()) %>
+            </div>
+          <%end%>
+          <%= link_to("View as single page", onepage_url()) %>
