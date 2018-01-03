@@ -1,3 +1,10 @@
+<script>
+  let navigate = (url) => {
+    $(".container").css("opacity", "0");
+    $("body").css("background", "url('/wood.jpg')")
+    setTimeout(() => window.location = url, 500);
+  }
+</script>
 <style>
   .item-name-on-picture {
     background-color: rgba(0,0,0,.7);
@@ -58,16 +65,19 @@
   @media only screen and (max-width: 500px) {
     .container,
     .container-fluid {
-      padding: 8px;
+      padding: 0;
+    }
+    body {
+      background-color: transparent;
     }
   }
-  .lakes-cafe-heading{
+  .lakes-cafe-heading {
     display: inline-block;
     left: 10vw;
     position: relative;
     text-align: center;
     font-size: 4em;
-    background-color: rgba(0,0,0,.5)
+    background-color: rgba(0,0,0,.5);
   }
   .thumbnail {
     border: 0 solid white;
@@ -75,12 +85,12 @@
     transition: filter 0.4s;
     background-color: rgba(0,0,0,0);
   }
-  .thumbnail:hover a img {
+  .thumbnail:hover img {
     transform: scale3d(1.1, 1.1, 1);
     filter: none;
     transition: filter 0.4s, transform 0.2s;
   }
-  .thumbnail a img {
+  .thumbnail img {
     transform: none;
     filter: brightness(.8);
     transition: filter 0.4s, transform 0.2s;
@@ -89,15 +99,22 @@
   .c-desc {
     background-color: rgba(0,0,0,.5);
   }
-  #lakesCarousel {
+  .carousel-inner {
     box-shadow: 0 0 45px black;
+  }
+  #logo {
+    display: inline-block;
+  }
+  .container {
+    transition: opacity .5s;
   }
 </style>
 <div class='container'>
-  <img id="logo" src="lakesCafeLogo.png" style="float: left;"></img>
-  <br/>
+  <img id="logo" src="lakesCafeLogo.png"></img>
   <h1 class="lakes-cafe-heading">Lakes Cafe</h1>
   <br/>
+  <br/><br/>
+
   <% if @images.count != 0 %>
     <div id="lakesCarousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -130,7 +147,6 @@
             <a class="carousel-control right" href="#lakesCarousel" data-slide="next">&rsaquo;</a>
           </div>
         <% end %>
-
 
         <br><br>
         <div class="jumbotron" id="about">
@@ -190,34 +206,15 @@
                     <br>
                   </div>
                   <div class="row">
-                    <% a = 0 %>
-                      <div class="col-md-4">
-                        <div class="thumbnail">
-                          <% if section.imageURL.present? %>
-
-                            <%=link_to( image_tag(section.imageURL), section_path(section), :class=>"setFixed img-rounded") %>
-                          <% else %>
-                            <%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
-                          <% end %>
-                          <div class="item-name-on-picture caption">
-                            <h3 style="text-align: center;"><%= section.name %></h3>
-                          </div>
+                    <% a = 0 %><% end %>
+                    <div class="col-md-4">
+                      <div class="thumbnail" onclick="navigate('<%= section_path(section) %>')">
+                        <img src="<%= section.imageURL.present? ? section.imageURL : "/egg.png" %>" class="img-rounded"></img>
+                        <div class="item-name-on-picture caption">
+                          <h3 style="text-align: center;"><%= section.name %></h3>
                         </div>
                       </div>
-                    <% else %>
-                      <div class="col-md-4">
-                        <div class="thumbnail">
-                          <% if section.imageURL.present? %>
-                            <%=link_to( image_tag(section.imageURL), section_path(section), :class=>"setFixed img-rounded") %>
-                          <% else %>
-                            <%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
-                          <% end %>
-                          <div class="item-name-on-picture caption">
-                            <h3 style="text-align: center;"><%= section.name %></h3>
-                          </div>
-                        </div>
-                      </div>
-                    <%end%>
+                    </div>
                   <%end%>
                 </div>
               <%end%>

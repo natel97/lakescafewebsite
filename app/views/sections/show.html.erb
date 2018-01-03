@@ -1,6 +1,6 @@
 <style>
 	.container-fluid {
-		transition: display 0.3s;
+		transition: display 0.3s, opacity .5s;
 	}
 	.item-name-on-picture {
 		border: -10px;
@@ -32,13 +32,13 @@
 		transition: filter 0.3s;
 		background-color: rgba(0,0,0,0);
 	}
-	.thumbnail:hover a img {
+	.thumbnail:hover img {
 		filter: none;
 		box-shadow: 0 0 96px black;
 		transition: filter 0.2s, transform 0.2s, box-shadow 0.4s;
 		transform: scale3d(1.1, 1.1, 1);
 	}
-	.thumbnail a img {
+	.thumbnail img {
 		filter: brightness(.7);
 		transition: filter 0.2s, transform 0.2s;
 		max-height: 512px;
@@ -72,7 +72,7 @@
 		max-height: 512px;
 	}
 	#space {
-		margin-top: 512px;
+		margin-top: 1028px;
 		width: 100%;
 	}
 </style>
@@ -80,14 +80,14 @@
 	$(document).ready(function () {
 		$('html, body').animate({
 			scrollTop: $('#scroll-to-me').offset().top
-		}, 700);
+		}, 1000);
 		setTimeout(() => {
 			$("#space").css("display", "none");
 			$(".big-caption").css("display", "block");
 			$('html, body').animate({
 				scrollTop: $('#scroll-to-me').offset().top
 			}, 0)
-		}, 700)
+		}, 1000)
 	});
 
 	let visible = false;
@@ -112,6 +112,13 @@
 		}, 700);
 		visible = !visible;
 	}
+
+	let navigate = (url) => {
+		$(".container-fluid").css("opacity", "0");
+		$(".can-hide").css("opacity", "0");
+		$(".parallax").css("opacity", "0");
+		setTimeout(() => window.location = url, 500);
+	}
 </script>
 <a href="/">
 	<img id="logo" class="can-hide" src="/lakesCafeLogo.png" style="float: left;"></img>
@@ -134,39 +141,39 @@
 <div class="can-hide" style="height:128px;"></div>
 <br>
 <div class='container can-hide'>
-		<br>
-		<h1>
-			<% @section.description %>
-			</h1>
-			<table class="food">
-				<tbody>
-					<% @section.items.each do |item|%>
+	<br>
+	<h1>
+		<% @section.description %>
+		</h1>
+		<table class="food">
+			<tbody>
+				<% @section.items.each do |item|%>
+					<tr>
+						<td>
+							<p><%= item.name%></p>
+						</td>
+						<td><%= item.description%></td>
+						<% if item.price.present? %>
+							<td style="text-align: right;">$<%= item.price%></td>
+						<%else%>
+							<td style="font-style: italic; text-align: right;"></td>
+						<%end%>
+					</tr>
+
+					<% item.sub_items.each do |subitem|%>
 						<tr>
-							<td>
-								<p><%= item.name%></p>
-							</td>
-							<td><%= item.description%></td>
-							<% if item.price.present? %>
-								<td style="text-align: right;">$<%= item.price%></td>
+							<td style="font-style: italic; padding-left: 3em;"><%= subitem.name%></td>
+							<td style="font-style: italic;"><%= subitem.description%></td>
+							<% if subitem.price.present? %>
+								<td style="font-style: italic; text-align: right;">$<%= subitem.price%></td>
 							<%else%>
 								<td style="font-style: italic; text-align: right;"></td>
 							<%end%>
 						</tr>
-
-						<% item.sub_items.each do |subitem|%>
-							<tr>
-								<td style="font-style: italic; padding-left: 3em;"><%= subitem.name%></td>
-								<td style="font-style: italic;"><%= subitem.description%></td>
-								<% if subitem.price.present? %>
-									<td style="font-style: italic; text-align: right;">$<%= subitem.price%></td>
-								<%else%>
-									<td style="font-style: italic; text-align: right;"></td>
-								<%end%>
-							</tr>
-						<%end%>
 					<%end%>
-				</tbody>
-			</table>
+				<%end%>
+			</tbody>
+		</table>
 	</div>
 	<div class="container-fluid">
 		<br><br>
@@ -184,32 +191,15 @@
 							</div>
 							<div class="row">
 								<% a = 0 %>
+								<% end %>
 									<div class="col-md-4">
-										<div class="thumbnail">
-											<% if section.imageURL.present? %>
-												<%=link_to( image_tag(section.imageURL), section_path(section), :class=>"setFixed img-rounded") %>
-											<% else %>
-												<%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
-											<% end %>
+										<div class="thumbnail" onclick="navigate('<%= section_path(section) %>')">
+											<img src="<%= section.imageURL.present? ? section.imageURL : "/eggs.png" %>" class="setFixed img-rounded"></img>
 											<div class="item-name-on-picture caption">
 												<h3 style="text-align: center;"><%= section.name %></h3>
 											</div>
 										</div>
 									</div>
-								<% else %>
-									<div class="col-md-4">
-										<div class="thumbnail">
-											<% if section.imageURL.present? %>
-												<%=link_to( image_tag(section.imageURL), section_path(section), :class=>"setFixed img-rounded") %>
-											<% else %>
-												<%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
-											<% end %>
-											<div class="item-name-on-picture caption">
-												<h3 style="text-align: center;"><%= section.name %></h3>
-											</div>
-										</div>
-									</div>
-								<%end%>
 							<%end%>
 						<%end%>
 					</div>
