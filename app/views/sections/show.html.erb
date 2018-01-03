@@ -1,49 +1,142 @@
 <style>
+	.container-fluid {
+		transition: display 0.3s;
+	}
+	.item-name-on-picture {
+		border: -10px;
+		background-color: rgba(0,0,0,.7);
+		border-radius: 16px;
+		transition: background-color 0.3s;
+		position: absolute;
+		top: 70%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		cursor: pointer;
+	}
+	.item-name-on-picture h3 {
+		transition: color 0.3s;
+	}
+	.thumbnail:hover .item-name-on-picture {
+		background-color: rgba(0,0,0,0);
+		border-radius: 16px;
+		transition: background-color 0.3s;
+	}
+	.thumbnail .item-name-on-picture h3{
+		font-size: 2em;
+		color: rgb(130, 172, 134);
+		text-shadow: 0, 0, 10px rgb(40,81,41), 0, 0, 2px rgb(40,81,41);
+	}
+	.thumbnail {
+		border: 0 solid white;
+		filter: none;
+		transition: filter 0.3s;
+		background-color: rgba(0,0,0,0);
+	}
+	.thumbnail:hover a img {
+		filter: none;
+		box-shadow: 0 0 96px black;
+		transition: filter 0.2s, transform 0.2s, box-shadow 0.4s;
+		transform: scale3d(1.1, 1.1, 1);
+	}
+	.thumbnail a img {
+		filter: brightness(.7);
+		transition: filter 0.2s, transform 0.2s;
+		max-height: 512px;
+	}
+	.big-caption {
+		text-align: center;
+		display: none;
+		font-size: 2em;
+		background-color: rgba(0,0,0,.7);
+		border-radius: 16px;
+		transition: background-color 0.3s;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		cursor: pointer;
+		padding: 16px;
+	}
 	.parallax {
-		/* The image used */
+		box-shadow: 0 0 20px 6px black;
+		cursor: pointer;
+		transition: height 0.5s, background-size 0.5s;
 		background-image: url("<%= @section.imageURL %>");
-		/* Set a specific height */
-		height: 500px;
-		/* Create the parallax scrolling effect */
+		height: 512px;
 		background-attachment: fixed;
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
-	.thumbnail a img{
+	.thumbnail a img {
 		max-height: 512px;
 	}
-	#space{
-		margin-top: 55vh;
+	#space {
+		margin-top: 512px;
 		width: 100%;
 	}
 </style>
 <script>
-
-$(document).ready(function () {
-    $('html, body').animate({
-        scrollTop: $('#scroll-to-me').offset().top
-    }, 1000);
-		setTimeout(() => {$("#space").css("display", "none");
+	$(document).ready(function () {
 		$('html, body').animate({
-        scrollTop: $('#scroll-to-me').offset().top
-    }, 0)}, 2000)
-});
+			scrollTop: $('#scroll-to-me').offset().top
+		}, 700);
+		setTimeout(() => {
+			$("#space").css("display", "none");
+			$(".big-caption").css("display", "block");
+			$('html, body').animate({
+				scrollTop: $('#scroll-to-me').offset().top
+			}, 0)
+		}, 700)
+	});
+
+	let visible = false;
+
+	let showHideBackground = () => {
+		visible
+			? $(".container-fluid").css("display", "block")
+			: $(".container-fluid").css("display", "none");
+		visible
+			? $(".parallax").css("height", "500px")
+			: $(".parallax").css("height", "100vh");
+		visible
+			? $(".parallax").css("background-size", "cover")
+			: $(".parallax").css("background-size", "contain");
+		visible
+			? $(".big-caption").css("display", "block")
+			: $(".big-caption").css("display", "none");
+		$(".can-hide").fadeToggle();
+
+		$('html, body').animate({
+			scrollTop: $('#scroll-to-me').offset().top
+		}, 700);
+		visible = !visible;
+	}
 </script>
-<div id="space">
+<img id="logo" class="can-hide" src="/lakesCafeLogo.png" style="float: left;"></img>
+<div id="space"></div>
+<div id="scroll-to-me"></div>
+<div class="can-hide" style="text-align: center;">
+	<a style="color:black;" href="/">
+		<button type="button" class="btn btn-primary btn-lg" style="float: left; margin-left: 128px; margin-top: 32px; display: inline-block;">
+			Back
+		</button>
+	</a>
+	<h1 class="page-header" style="text-align: center; display: inline-block;"></h1>
 </div>
-<div id="scroll-to-me">
+<div class="parallax" onclick="showHideBackground()">
+
+	<div class="big-caption">
+		<h1><%= @section.name %></h1>
+		<% if @section.image_caption.present? %>
+			Pictured:
+			<%= @section.image_caption %>
+		<% end %>
+	</div>
 </div>
-<div style="text-align: center;">
-	<button type="button" class="btn btn-primary btn-lg" style="float: left; margin-left: 128px; margin-top: 32px; display: inline-block;">
-		<a style="color:black;" href="/">Back</a>
-	</button>
-	<h1 class="page-header" style="text-align: center; display: inline-block;"><%= @section.name %></h1>
-</div>
-<div class="parallax"></div>
-<div style="height:128px;background-color:white;"></div>
+<div class="can-hide" style="height:128px;"></div>
 <br>
-<div class='container-fluid'>
+<div class='container can-hide'>
 	<div class="well well-sm">
 		<br>
 		<h1>
@@ -79,8 +172,10 @@ $(document).ready(function () {
 				</tbody>
 			</table>
 		</div>
+	</div>
+	<div class="container-fluid">
 		<br><br>
-		<h1 class="page-header">Other
+		<h1 class="title">Other
 			<%= @section.heading.name %>
 			Items</h1>
 		<br><br>
@@ -101,7 +196,7 @@ $(document).ready(function () {
 											<% else %>
 												<%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
 											<% end %>
-											<div class="caption">
+											<div class="item-name-on-picture caption">
 												<h3 style="text-align: center;"><%= section.name %></h3>
 											</div>
 										</div>
@@ -114,7 +209,7 @@ $(document).ready(function () {
 											<% else %>
 												<%=link_to( image_tag("/egg.png"), section_path(section), :class=>"setFixed img-rounded") %>
 											<% end %>
-											<div class="caption">
+											<div class="item-name-on-picture caption">
 												<h3 style="text-align: center;"><%= section.name %></h3>
 											</div>
 										</div>
