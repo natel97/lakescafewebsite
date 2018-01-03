@@ -61,6 +61,14 @@
       padding: 8px;
     }
   }
+  .lakes-cafe-heading{
+    display: inline-block;
+    left: 10vw;
+    position: relative;
+    text-align: center;
+    font-size: 4em;
+    background-color: rgba(0,0,0,.5)
+  }
   .thumbnail {
     border: 0 solid white;
     filter: none;
@@ -86,7 +94,10 @@
   }
 </style>
 <div class='container'>
-  <br/><br/><br/>
+  <img id="logo" src="lakesCafeLogo.png" style="float: left;"></img>
+  <br/>
+  <h1 class="lakes-cafe-heading">Lakes Cafe</h1>
+  <br/>
   <% if @images.count != 0 %>
     <div id="lakesCarousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -120,11 +131,9 @@
           </div>
         <% end %>
 
-        <img id="logo" src="lakesCafeLogo.png" style="float: left;"></img>
+
         <br><br>
         <div class="jumbotron" id="about">
-          <h1 class="page-header" style="text-align: center;">Lakes Cafe</h1>
-          <br><br>
           <p>Located in Perham Minnesota. It's a great place for groups of all sizes! We even have a room in the back that is perfect for private parties. Please call ahead to ensure availability.</p>
 
           <a style="color:black;" href="tel:+12183465920">
