@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <style>
-  body, h1, h2, h3, h4, h5, h6, p{
+  h1, h2, h3, h4, h5, h6{
     color: rgb(130, 172, 134);
   }
   .title, .heading{
@@ -24,7 +24,7 @@
   .well{
     border-radius: 32px;
   }
-  .jumbotron, .well, img, .title, .heading{
+  .jumbotron, .well, img, .title, .heading, .food{
     box-shadow: 0px 0px 48px black;
   }
   .thumbnail{
@@ -34,12 +34,19 @@
     box-shadow: 0px 0px 48px black;
     border-radius: 100px;
   }
-  .table-striped tbody tr:nth-child(even){
-    background-color: rgba(0, 143, 247, .5);
+  .food tbody tr:nth-child(even){
+    background-color: rgba(0, 143, 247, 1);
     border: 1px solid black;
   }
-  .table-striped tbody tr:nth-child(odd){
-    background-color: rgba(0, 196, 245, .5);
+  .food{
+    color: black;
+    width: 100%;
+  }
+  .food tbody tr td{
+    padding: 16px;
+  }
+  .food tbody tr:nth-child(odd){
+    background-color: rgba(0, 196, 245, 1);
     border: 1px solid black;
   }
   </style>
