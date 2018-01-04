@@ -24,6 +24,19 @@ ActiveAdmin.register_page "Dashboard" do
     #   end
     columns do
       column do
+        panel "Soups" do
+        section do
+          table_for Soup.all do |s|
+            s.column("Soup") {|soup| soup.name}
+            s.column("Available") {|soup| check_box("Available", soup.id, {checked: soup.is_today})}
+          end
+          button("Update")
+        end
+        end
+      end
+      column do
+        panel "Welcome" do
+
         div do
           br
           text_node %{
@@ -47,6 +60,7 @@ ActiveAdmin.register_page "Dashboard" do
             <p>If you have any questions, feel free to email me <a href="mailto:nate.lubitz@gmail.com">here</a>.</p>
           }.html_safe
         end
+      end
       end
     end
 
