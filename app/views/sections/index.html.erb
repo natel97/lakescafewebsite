@@ -4,6 +4,15 @@
     $("body").css("background", "url('/wood.jpg')")
     setTimeout(() => window.location = url, 500);
   }
+
+  $(document).ready(function () {
+    $("#contents").css("opacity", "1");
+    $("#contents").css("top", "-" + $("#contents").height() + "px");
+    setTimeout(() => $(".container").css("top", "0px"), 1000);
+    $("#contents").animate({
+			top: "0px"
+		}, 1000)
+  });
 </script>
 <style>
   .item-name-on-picture {
@@ -26,6 +35,9 @@
     background-color: rgba(0,0,0,0);
     border-radius: 16px;
     transition: background-color 0.3s;
+  }
+  #contents{
+    position: relative;
   }
   .setFixed {
     width: auto;
@@ -52,9 +64,6 @@
     object-fit: cover;
     height: 450px !important;
     width: 100%;
-  }
-  .setFixed {
-    height: 480px !important;
   }
   .container,
   container-fluid {
@@ -106,116 +115,119 @@
     display: inline-block;
   }
   .container {
-    transition: opacity .5s;
+    transition: opacity 0.5s;
   }
 </style>
 <div class='container'>
-  <img id="logo" src="lakesCafeLogo.png"></img>
-  <h1 class="lakes-cafe-heading">Lakes Cafe</h1>
-  <br/>
-  <br/><br/>
+  <div id="contents">
+    <img id="logo" src="lakesCafeLogo.png"></img>
+    <h1 class="lakes-cafe-heading">Lakes Cafe</h1>
+    <br/>
+    <br/><br/>
 
-  <% if @images.count != 0 %>
-    <div id="lakesCarousel" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <% x = 0 %>
-          <% @images.each do |image| %>
-            <% if image.id == @images.first.id %>
-              <li data-target="#lakesCarousel" data-slide-to="<%= x %>" class="active"></li>
-            <% else %>
-              <li data-target="#lakesCarousel" data-slide-to="<%= x %>"></li>
-            <% end %>
-            <% x = x + 1 %><% end %>
-          </ol>
-          <div class="carousel-inner" role="listbox">
+    <% if @images.count != 0 %>
+      <div id="lakesCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <% x = 0 %>
             <% @images.each do |image| %>
               <% if image.id == @images.first.id %>
-                <div class="carousel-item item active">
-                <% else %>
-                  <div class="carousel-item item">
-                  <% end %>
-                  <img class="d-block img-fluid carousel-image" src="<%= image.image_url %>" alt="<%= image.image_url %>">
-                  <% if !image.description.empty? %>
-                    <div class="carousel-caption d-none d-md-block c-desc">
-                      <h3><%= image.description %></h3>
-                    </div>
-                  <% end %>
-                </div>
+                <li data-target="#lakesCarousel" data-slide-to="<%= x %>" class="active"></li>
+              <% else %>
+                <li data-target="#lakesCarousel" data-slide-to="<%= x %>"></li>
               <% end %>
-            </div>
-            <a class="carousel-control left" href="#lakesCarousel" data-slide="prev">&lsaquo;</a>
-            <a class="carousel-control right" href="#lakesCarousel" data-slide="next">&rsaquo;</a>
-          </div>
-        <% end %>
-
-        <br><br>
-        <div class="jumbotron" id="about">
-          <p>Located in Perham Minnesota. It's a great place for groups of all sizes! We even have a room in the back that is perfect for private parties. Please call ahead to ensure availability.</p>
-
-          <a style="color:black;" href="tel:+12183465920">
-            <button type="button" class="btn btn-primary btn-lg">
-              <span class="glyphicon glyphicon-earphone"></span>&nbsp; Call Us!
-            </button>
-          </a>
-          <h3 id="hour-tag">Hours</h3>
-          <div id="hours">
-            <table>
-              <tbody>
-                <tr>
-                  <td>Sunday</td>
-                  <td class="time">8AM - 2PM</td>
-                </tr>
-                <tr>
-                  <td>Monday</td>
-                  <td class="time">5:30AM - 3PM</td>
-                </tr>
-                <tr>
-                  <td>Tuesday</td>
-                  <td class="time">5:30AM - 3PM</td>
-                </tr>
-                <tr>
-                  <td>Wednesday</td>
-                  <td class="time">5:30AM - 3PM</td>
-                </tr>
-                <tr>
-                  <td>Thursday</td>
-                  <td class="time">5:30AM - 3PM</td>
-                </tr>
-                <tr>
-                  <td>Friday</td>
-                  <td class="time">5:30AM - 3PM</td>
-                </tr>
-                <tr>
-                  <td>Saturday</td>
-                  <td class="time">5:30AM - 3PM</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <br><br>
-        <h1 id="title" class="title">Menu</h1>
-        <hr>
-        <% @headings.each do |heading| %>
-          <div>
-            <h1 class="heading" id="<%=  heading.name %>"><%= heading.name %></h1>
-            <% a=2 %>
-              <% heading.sections.where(:visible => true).each do |section| %>
-                <% a += 1 %>
-                  <% if (a == 3) %>
-                    <br>
+              <% x = x + 1 %><% end %>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+              <% @images.each do |image| %>
+                <% if image.id == @images.first.id %>
+                  <div class="carousel-item item active">
+                  <% else %>
+                    <div class="carousel-item item">
+                    <% end %>
+                    <img class="d-block img-fluid carousel-image" src="<%= image.image_url %>" alt="<%= image.image_url %>">
+                    <% if !image.description.empty? %>
+                      <div class="carousel-caption d-none d-md-block c-desc">
+                        <h3><%= image.description %></h3>
+                      </div>
+                    <% end %>
                   </div>
-                  <div class="row">
-                    <% a = 0 %><% end %>
-                    <div class="col-md-4">
-                      <div class="thumbnail" onclick="navigate('<%= section_path(section) %>')">
-                        <img src="<%= section.imageURL.present? ? section.imageURL : "/egg.png" %>" class="img-rounded"></img>
-                        <div class="item-name-on-picture caption">
-                          <h3 style="text-align: center;"><%= section.name %></h3>
+                <% end %>
+              </div>
+              <a class="carousel-control left" href="#lakesCarousel" data-slide="prev">&lsaquo;</a>
+              <a class="carousel-control right" href="#lakesCarousel" data-slide="next">&rsaquo;</a>
+            </div>
+          <% end %>
+
+          <br><br>
+          <div class="jumbotron" id="about">
+            <p>Located in Perham Minnesota. It's a great place for groups of all sizes! We even have a room in the back that is perfect for private parties. Please call ahead to ensure availability.</p>
+
+            <a style="color:black;" href="tel:+12183465920">
+              <button type="button" class="btn btn-primary btn-lg">
+                <span class="glyphicon glyphicon-earphone"></span>&nbsp; Call Us!
+              </button>
+            </a>
+            <h3 id="hour-tag">Hours</h3>
+            <div id="hours">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Sunday</td>
+                    <td class="time">8AM - 2PM</td>
+                  </tr>
+                  <tr>
+                    <td>Monday</td>
+                    <td class="time">5:30AM - 3PM</td>
+                  </tr>
+                  <tr>
+                    <td>Tuesday</td>
+                    <td class="time">5:30AM - 3PM</td>
+                  </tr>
+                  <tr>
+                    <td>Wednesday</td>
+                    <td class="time">5:30AM - 3PM</td>
+                  </tr>
+                  <tr>
+                    <td>Thursday</td>
+                    <td class="time">5:30AM - 3PM</td>
+                  </tr>
+                  <tr>
+                    <td>Friday</td>
+                    <td class="time">5:30AM - 3PM</td>
+                  </tr>
+                  <tr>
+                    <td>Saturday</td>
+                    <td class="time">5:30AM - 3PM</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <br><br>
+          <h1 id="title" class="title">Menu</h1>
+          <hr>
+          <% @headings.each do |heading| %>
+            <div>
+              <h1 class="heading" id="<%=  heading.name %>"><%= heading.name %></h1>
+              <% a=2 %>
+                <% heading.sections.where(:visible => true).each do |section| %>
+                  <% a += 1 %>
+                    <% if (a == 3) %>
+                      <br>
+                    </div>
+                    <div class="row">
+                      <% a = 0 %><% end %>
+                      <div class="col-md-4">
+                        <div class="thumbnail" onclick="navigate('<%= section_path(section) %>')">
+                          <img src="<%= section.imageURL.present? ? section.imageURL : "/egg.png" %>" class="img-rounded"></img>
+                          <div class="item-name-on-picture caption">
+                            <h3 style="text-align: center;"><%= section.name %></h3>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  <%end%>
-                </div>
-              <%end%>
-              <%= link_to("View as single page", onepage_url()) %>
+                    <%end%>
+                  </div>
+                <%end%>
+                <%= link_to("View as single page", onepage_url()) %>
+              </div>
+            </div>
