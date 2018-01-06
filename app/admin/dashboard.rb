@@ -25,13 +25,22 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
       column do
         panel "Soups" do
-        section do
-          table_for Soup.all do |s|
-            s.column("Soup") {|soup| soup.name}
-            s.column("Available") {|soup| check_box("Available", soup.id, {checked: soup.is_today})}
+          section do
+            #table_for Soup.all do |s|
+            #  s.column("Soup") {|soup| soup.name}
+            #  s.column("Available") {|soup| check_box("Available", soup.id, {checked: soup.is_today})}
+          #end
+          #button("Update")
+            form_for :soup, :url => "/admin/set-soup", :html => { :method => :put } do
+              table_for Soup.all do |s|
+                fields_for "soup[]", s do |soup_fields|
+                  s.column("Soup") {|soup| soup.name}
+                  s.column("Available") {|soup| "soup", "is_today"}
+                end
+              end
+              submit_tag
+            end
           end
-          button("Update")
-        end
         end
       end
       column do
@@ -70,5 +79,6 @@ ActiveAdmin.register_page "Dashboard" do
     #     end
     #   end
     # end
-  end # content
+   # content
+ end
 end
