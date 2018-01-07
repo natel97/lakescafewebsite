@@ -13,10 +13,14 @@ permit_params :heading_id, :name, :description, :imageURL, :visible, :image_capt
 # end
 
 form do |f|
-  f.inputs "Project Details" do
-    f.inputs
+  f.inputs "Section Details" do
+    f.input :heading
+    f.input :name
+    f.input :description
+    f.input :imageURL
+    f.input :visible
+    f.input :image_caption
     f.input :image, :required => true, :as => :file
-    # Will preview the image when the object is edited
   end
   f.actions
  end

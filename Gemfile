@@ -4,10 +4,11 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-
+gem 'retriable', '3.0.1'
 gem 'nokogiri',  '~> 1.8.1'
-gem 'google-api-client'
-gem "paperclip", "~> 5.0.0.beta1"
+gem 'google-api-client', '0.7.1', require: 'google/api_client'
+gem "paperclip", "~> 5.1.0"
+gem 'paperclip-googledrive-new'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 # Use sqlite3 as the database for Active Record
