@@ -18,7 +18,7 @@ form do |f|
     f.input :name
     f.input :image_url
     f.input :is_today
-    f.input :image, :required => true, :as => :file
+    f.input :image, :as => :file
   end
   f.actions
  end
