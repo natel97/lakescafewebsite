@@ -3,6 +3,9 @@ ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
  content title: proc{ I18n.t("active_admin.dashboard") } do
+   div do
+     flash[:message]
+  end
   #   div class: "blank_slate_container", id: "dashboard_default_message" do
   #     span class: "blank_slate" do
   #       span I18n.t("active_admin.dashboard_welcome.welcome")
@@ -26,19 +29,14 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Soups" do
           section do
-            #table_for Soup.all do |s|
-            #  s.column("Soup") {|soup| soup.name}
-            #  s.column("Available") {|soup| check_box("Available", soup.id, {checked: soup.is_today})}
-          #end
-          #button("Update")
-            form_for :soup, :url => "/admin/set-soup", :html => { :method => :put } do
+            form_for :soup, :url => "/admin/set-soup", :html => { :method => :put } do |f|
               table_for Soup.all do |s|
-                fields_for "soup[]", s do |soup_fields|
+                fields_for "soups[soup[]]", s do |soup_fields|
                   s.column("Soup") {|soup| soup.name}
-                  s.column("Available") {|soup| "soup", "is_today"}
+                  s.column("Available") {|soup| f.check_box("available[" + soup.id.to_s + "]", {:checked => soup.is_today}, "yes", "no")}
                 end
               end
-              submit_tag
+              f.submit
             end
           end
         end
