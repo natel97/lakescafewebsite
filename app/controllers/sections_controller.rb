@@ -4,6 +4,15 @@ class SectionsController < ApplicationController
   # GET /sections
   # GET /sections.json
   def index
+    @Soups = []
+    puts Date.today.yday
+    Soup.where(:is_today => true).each do |soup|
+      puts soup.updated_at.yday
+      if soup.updated_at.yday >= Date.today.yday
+        puts soup
+        @Soups.push(soup)
+      end
+    end
     @sections = Section.all
     @headings = Heading.all
     @images = CarouselImage.all.where(:visible => true)

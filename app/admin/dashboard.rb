@@ -3,6 +3,9 @@ ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
  content title: proc{ I18n.t("active_admin.dashboard") } do
+   div do
+     flash[:message]
+  end
   #   div class: "blank_slate_container", id: "dashboard_default_message" do
   #     span class: "blank_slate" do
   #       span I18n.t("active_admin.dashboard_welcome.welcome")
@@ -24,6 +27,23 @@ ActiveAdmin.register_page "Dashboard" do
     #   end
     columns do
       column do
+        panel "Soups" do
+          section do
+            form_for :soup, :url => "/admin/set-soup", :html => { :method => :put } do |f|
+              table_for Soup.all do |s|
+                fields_for "soups[soup[]]", s do |soup_fields|
+                  s.column("Soup") {|soup| soup.name}
+                  s.column("Available") {|soup| f.check_box("available[" + soup.id.to_s + "]", {:checked => soup.is_today}, "yes", "no")}
+                end
+              end
+              f.submit
+            end
+          end
+        end
+      end
+      column do
+        panel "Welcome" do
+
         div do
           br
           text_node %{
@@ -48,6 +68,7 @@ ActiveAdmin.register_page "Dashboard" do
           }.html_safe
         end
       end
+      end
     end
 
     #   column do
@@ -56,5 +77,6 @@ ActiveAdmin.register_page "Dashboard" do
     #     end
     #   end
     # end
-  end # content
+   # content
+ end
 end
