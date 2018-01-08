@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   root 'sections#index'
 
   resources :sections
-  resources :items, :defaults => { :format => :json}
-  resources :headings, :defaults => {:format => :json}
-  resources :sub_items, :defaults => {:format => :json}
+  resources :items, defaults: { format: :json }
+  resources :headings, defaults: { format: :json }
+  resources :sub_items, defaults: { format: :json }
   get 'onepage', to: 'headings#index'
   put 'admin/set-soup', to: 'soups#set_soups'
+  put 'admin/alter-variables', to: 'soups#set_variables'
+  put 'admin/google_drive', to: 'soups#google_drive'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

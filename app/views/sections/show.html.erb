@@ -61,7 +61,7 @@
 		box-shadow: 0 0 20px 6px black;
 		cursor: pointer;
 		transition: height 0.5s, background-size 0.5s;
-		background-image: url("<%= @section.imageURL %>");
+		background-image: url("<%= @section.image.url(:original) %>");
 		height: 512px;
 		background-attachment: fixed;
 		background-position: center;
@@ -202,7 +202,7 @@
 								<% a = 0 %><% end %>
 								<div class="col-md-4">
 									<div class="thumbnail" onclick="navigate('<%= section_path(section) %>')">
-										<img src="<%= section.imageURL.present? ? section.imageURL : "/eggs.png" %>" class="setFixed img-rounded"></img>
+										<img src="<%= section.image.url(:original).present? ? section.image.url(:original) : "/eggs.png" %>" class="setFixed img-rounded"></img>
 										<div class="item-name-on-picture caption">
 											<h3 style="text-align: center;"><%= section.name %></h3>
 										</div>

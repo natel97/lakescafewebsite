@@ -153,7 +153,7 @@
                   <% else %>
                     <div class="carousel-item item">
                     <% end %>
-                    <img class="d-block img-fluid carousel-image" src="<%= image.image_url %>" alt="<%= image.image_url %>">
+                    <img class="d-block img-fluid carousel-image" src="<%= image.image.url(:original) %>" alt="<%= image.image.url(:original) %>">
                     <% if !image.description.empty? %>
                       <div class="carousel-caption d-none d-md-block c-desc">
                         <h3><%= image.description %></h3>
@@ -221,7 +221,7 @@
               <% @Soups.each do |soup| %>
                 <div class='col-md-4'>
                   <div class="soup thumbnail">
-                    <%= image_tag(soup.image_url, class: "soup-image img-rounded") %>
+                    <%= image_tag(soup.image.url(:original), class: "soup-image img-rounded") %>
                     <h2 class="item-name-on-picture caption"><%= soup.name %></h2>
                   </div>
                 </div>
@@ -243,7 +243,7 @@
                       <% a = 0 %><% end %>
                       <div class="col-md-4">
                         <div class="thumbnail" onclick="navigate('<%= section_path(section) %>')">
-                          <img src="<%= section.imageURL.present? ? section.imageURL : "/egg.png" %>" class="img-rounded"></img>
+                          <img src="<%= section.image.url(:original).present? ? section.image.url(:original) : "/egg.png" %>" class="img-rounded"></img>
                           <h2 class="item-name-on-picture caption"><%= section.name %></h2>
                         </div>
                       </div>
