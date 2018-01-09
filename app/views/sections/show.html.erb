@@ -202,7 +202,7 @@
 								<% a = 0 %><% end %>
 								<div class="col-md-4">
 									<div class="thumbnail" onclick="navigate('<%= section_path(section) %>')">
-										<img src="<%= section.image.url(:original).present? ? section.image.url(:original) : "/eggs.png" %>" class="setFixed img-rounded"></img>
+										<img src="<%= section.image.url(:original) %>" class="setFixed img-rounded"></img>
 										<div class="item-name-on-picture caption">
 											<h3 style="text-align: center;"><%= section.name %></h3>
 										</div>

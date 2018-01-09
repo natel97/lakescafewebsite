@@ -153,7 +153,7 @@
                   <% else %>
                     <div class="carousel-item item">
                     <% end %>
-                    <img class="d-block img-fluid carousel-image" src="<%= image.image.url(:original) %>" alt="<%= image.image.url(:original) %>">
+                    <img class="d-block img-fluid carousel-image" src="<%= image.image.url(:original) %>" alt="Image not found">
                     <% if !image.description.empty? %>
                       <div class="carousel-caption d-none d-md-block c-desc">
                         <h3><%= image.description %></h3>
@@ -243,7 +243,7 @@
                       <% a = 0 %><% end %>
                       <div class="col-md-4">
                         <div class="thumbnail" onclick="navigate('<%= section_path(section) %>')">
-                          <img src="<%= section.image.url(:original).present? ? section.image.url(:original) : "/egg.png" %>" class="img-rounded"></img>
+                          <img src="<%= section.image.url(:original) %>" class="img-rounded"></img>
                           <h2 class="item-name-on-picture caption"><%= section.name %></h2>
                         </div>
                       </div>
