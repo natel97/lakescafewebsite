@@ -107,5 +107,6 @@ class SoupsController < ApplicationController
     y.save
     Variable.where(key: 'ACTIVATION_URL').first.delete
     Variable.where(key: 'AUTHORIZATION_CODE').first.delete
+    exec('rails restart')
   end
 end
