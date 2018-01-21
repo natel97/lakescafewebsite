@@ -12,7 +12,7 @@ gem 'paperclip-googledrive-new'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 # Use sqlite3 as the database for Active Record
-gem 'pg'
+gem 'pg', '~> 0.18'
 gem 'activeadmin', '~> 1.0.0.pre5'
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 gem 'devise'
