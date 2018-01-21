@@ -2,7 +2,6 @@ class SoupsController < ApplicationController
   def set_variables
     if request.put?
       params.permit!
-      puts params
       keys = params[:key]
       values = params[:value]
       unless keys.nil?

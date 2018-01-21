@@ -6,13 +6,8 @@ class SectionsController < ApplicationController
   def index
     @Soups = []
     get_access_token
-    puts Date.today.yday
     Soup.where(is_today: true).each do |soup|
-      puts soup.updated_at.yday
-      if soup.updated_at.yday >= Date.today.yday
-        puts soup
-        @Soups.push(soup)
-      end
+      @Soups.push(soup) if soup.updated_at.yday >= Date.today.yday
     end
     @sections = Section.all
     @headings = Heading.all

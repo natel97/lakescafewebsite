@@ -100,12 +100,44 @@ ActiveAdmin.register_page 'Dashboard' do
     end
     columns do
       column do
+        panel 'Common Actions' do
+          columns do
+            column do
+              link_to 'New Heading', '/admin/headings/new'
+            end
+            column do
+              link_to 'New Section', '/admin/sections/new'
+            end
+            column do
+              link_to 'New Item', '/admin/items/new'
+            end
+            column do
+              link_to 'New Sub Item', '/admin/sub_items/new'
+            end
+          end
+        end
+      end
+      column do
         panel 'Questions?' do
           div do
             br
             text_node %(
             <p>Feel free to email me <a href="mailto:nate.lubitz@gmail.com">here</a>.</p>
             ).html_safe
+          end
+        end
+      end
+    end
+    columns do
+      column do
+        panel 'Carousel Images' do
+          form_for :carousel_image, url: '/admin/update-images', html: { method: :put } do |f|
+            table_for CarouselImage.all do |table|
+              table.column('Image') { |img| image_tag img.image.url(:original), size: '64x48' }
+              table.column('Description') { |_img| f.text_field('description[' + _img.id.to_s + ']', value: _img.description) }
+              table.column('Visible') { |_img| f.check_box('visible[' + _img.id.to_s + ']', { checked: _img.visible }, 'yes', 'no') }
+            end
+            f.submit('Update Carousel Images')
           end
         end
       end
