@@ -11,6 +11,19 @@ class HeadingsController < ApplicationController
   # GET /headings/1.json
   def show; end
 
+  def set_specials
+    params.permit!
+    bools = params[:today]
+
+    bools.each do |var|
+      special = Special.find(var)
+      special.today = bools[var]
+      special.save
+    end
+    flash[:notice] = 'You have updated the specials for today!'
+    redirect_to '/admin'
+  end
+
   def update_images
     params.permit!
     imgs = params[:carousel_image]
@@ -21,6 +34,7 @@ class HeadingsController < ApplicationController
       image.visible = imgs[:visible][img].eql?('yes')
       image.save
     end
+    flash[:notice] = 'You have updated the Carousel Images!'
     redirect_to '/admin'
   end
 

@@ -2,7 +2,7 @@ ActiveAdmin.register Soup do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :name, :image_url, :is_today, :image
+  permit_params :name, :is_today, :image
   #
   # or
   #
@@ -15,7 +15,6 @@ ActiveAdmin.register Soup do
   form do |f|
     f.inputs 'Section Details' do
       f.input :name
-      f.input :image_url
       f.input :is_today
       f.input :image, as: :file
       f.label 'Please resize photos to 640px480px to keep load times low!'

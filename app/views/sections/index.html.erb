@@ -213,20 +213,34 @@
             </div>
           </div>
           <br><br>
-          <% if @Soups.length > 0 %>
+          <% if @Soups.length > 0 || @Specials.length > 0 %>
             <h3 class="title">Today's Items!</h3>
-            <div id="soups">
-              <h3 class="title">Soups</h3>
-              <br>
-              <% @Soups.each do |soup| %>
-                <div class='col-md-4'>
-                  <div class="soup thumbnail">
-                    <%= image_tag(soup.image.url(:original), class: "soup-image img-rounded") %>
-                    <h2 class="item-name-on-picture caption"><%= soup.name %></h2>
+            <% if @Soups.length > 0 %>
+              <div id="soups">
+                <h3 class="title">Soups</h3>
+                <br>
+                <% @Soups.each do |soup| %>
+                  <div class='col-md-4'>
+                    <div class="soup thumbnail">
+                      <%= image_tag(soup.image.url(:original), class: "soup-image img-rounded") %>
+                      <h2 class="item-name-on-picture caption"><%= soup.name %></h2>
+                    </div>
                   </div>
-                </div>
+                <% end %>
+              </div>
+            <% end %>
+            <% if @Specials.length > 0 %>
+            <h1>Specials!</h1>
+            <div class="jumbotron" id="specials">
+              <% @Specials.each do |special| %>
+
+              <h3><li> <%= 'For ' + (special.breakfast ? 'Breakfast ' : 'Lunch ') + 'we have ' + special.name + "\t for $" + special.price.to_s %> </li></h3>
+              <p> <%= special.description %> </p>
+
+
               <% end %>
-            </div>
+            <% end %>
+          </div>
           <% end %>
           <h1 id="title" class="title">Menu</h1>
           <hr>

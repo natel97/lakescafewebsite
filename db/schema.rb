@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180108005522) do
+ActiveRecord::Schema.define(version: 20180121033909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 20180108005522) do
   end
 
   create_table "carousel_images", force: :cascade do |t|
-    t.string "image_url"
     t.text "description"
     t.boolean "visible"
     t.string "image_file_name"
@@ -77,7 +76,6 @@ ActiveRecord::Schema.define(version: 20180108005522) do
     t.integer "heading_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "imageURL"
     t.boolean "visible"
     t.string "image_caption"
     t.string "image_file_name"
@@ -88,7 +86,6 @@ ActiveRecord::Schema.define(version: 20180108005522) do
 
   create_table "soups", force: :cascade do |t|
     t.string "name"
-    t.string "image_url"
     t.boolean "is_today"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -96,6 +93,16 @@ ActiveRecord::Schema.define(version: 20180108005522) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "specials", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.boolean "breakfast"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "today"
   end
 
   create_table "sub_items", id: :serial, force: :cascade do |t|

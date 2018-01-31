@@ -5,9 +5,13 @@ class SectionsController < ApplicationController
   # GET /sections.json
   def index
     @Soups = []
+    @Specials = []
     get_access_token
     Soup.where(is_today: true).each do |soup|
       @Soups.push(soup) if soup.updated_at.yday >= Date.today.yday
+    end
+    Special.where(today: true).each do |special|
+      @Specials.push(special) if special.updated_at.yday >= Date.today.yday
     end
     @sections = Section.all
     @headings = Heading.all

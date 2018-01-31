@@ -76,6 +76,22 @@ ActiveAdmin.register_page 'Dashboard' do
         end
       end
       column do
+        panel 'Specials' do
+          section do
+            form_for :specials, url: '/admin/set-specials', html: { method: :put } do |f|
+              table_for Special.all do |table|
+                fields_for 'specials[]', table do |_field|
+                  table.column('Name') { |var| link_to(var.name, admin_special_path(var)) }
+                  table.column('Type') { |var| status_tag var.breakfast ? 'Breakfast' : 'Lunch', class: var.breakfast ? 'orange' : 'green' }
+                  table.column('Today\'s Special') { |var| f.check_box :today, checked: var.today, id: 'today[' + var.id.to_s + ']', name: 'today[' + var.id.to_s + ']' }
+                end
+              end
+              f.submit('Save Specials!')
+            end
+          end
+        end
+      end
+      column do
         panel 'Variables' do
           section do
             form_for :variable, url: '/admin/alter-variables', html: { method: :put } do |f|
@@ -113,6 +129,15 @@ ActiveAdmin.register_page 'Dashboard' do
             end
             column do
               link_to 'New Sub Item', '/admin/sub_items/new'
+            end
+            column do
+              link_to 'New Soup', '/admin/soups/new'
+            end
+            column do
+              link_to 'New Carousel Image', '/admin/carousel_images/new'
+            end
+            column do
+              link_to 'New Special', '/admin/specials/new'
             end
           end
         end

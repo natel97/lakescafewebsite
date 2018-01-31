@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   put 'admin/google_drive', to: 'soups#google_drive'
   put 'admin/update-menu', to: 'items#update_menu'
   put 'admin/update-images', to: 'headings#update_images'
+  put 'admin/set-specials', to: 'headings#set_specials'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
