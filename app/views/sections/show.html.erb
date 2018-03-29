@@ -60,7 +60,7 @@
 	.parallax {
 		box-shadow: 0 0 20px 6px black;
 		cursor: pointer;
-		transition: height 0.5s, background-size 0.5s;
+		transition: height 0.2s, background-size 0.2s;
 		background-image: url("<%= @section.image_file_name.nil? ? "/lakesCafeLogo.png" : "/section--" + @section.id.to_s + "." +  @section.image_file_name.split(".").last %>");
 		height: 512px;
 		background-attachment: fixed;
@@ -97,17 +97,13 @@
 	let hideStuff = () => {
 		$('html, body').animate({
 			scrollTop: $('.parallax').offset().top
-		}, 400);
-		setTimeout($('html, body').animate({
-			scrollTop: $('body').offset().top
-		}, 0), 400);
+		}, 300);
 	}
 	let showHideBackground = () => {
-
 		visible
-			? $('html, body').animate({
-				scrollTop: $('body').offset().top
-			}, 700)
+			? setTimeout(() => $('html, body').animate({
+				scrollTop: $('#header-image').offset().top - 64
+			}, 500), 20)
 			: hideStuff();
 		visible
 			? $(".parallax").css("box-shadow", "0 0 20px 6px black")
@@ -146,8 +142,8 @@
 		<% end %>
 	</div>
 </div>
-<div class="parallax" onclick="showHideBackground()"></div>
-<div class="can-hide" style="height:128px;"></div>
+<div id="header-image" class="parallax" onclick="showHideBackground()"></div>
+<div id="unclick-location" class="can-hide" style="height:128px;"></div>
 <br>
 <div class='container can-hide'>
 	<br>
@@ -186,7 +182,7 @@
 	</div>
 	<div class="container-fluid">
 		<br><br>
-		<h1 class="title">Other
+		<h1 id="title" class="title">Other
 			<%= @section.heading.name %>
 			Items</h1>
 		<br><br>
