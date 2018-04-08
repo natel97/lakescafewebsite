@@ -68,10 +68,14 @@
 				</div>
 			</div>
 			<br><br>
+			<div class="pagebreak"></div>
 			<h1 id="title" class="title">Menu</h1>
 			<hr>
 			<br><br><br>
 			<% @headings.each do |heading| %>
+			<% if @headings.first != heading %>
+			<div class="pagebreak"></div>
+			<% end %>
 				<h1 class="heading" id="<%=  heading.name %>"><%= heading.name %></h1>
 				<div class="single-heading">
 					<%  heading.sections.where(:visible => true).each do |section| %>
@@ -108,68 +112,74 @@
 	</div>
 </div>
 <style>
-	body {
-		position: relative;
-	}
-	.wholeSection {
-		background-color: #97b59b;
-		display: block;
-	}
-	.heading {
-		font-size: 3em;
-		text-align: right;
-		color: #2b5226;
-	}
-	.section {
-		font-size: 2.5em;
-		text-align: center;
-		color: #2b5226;
-	}
-	.itemName {
-		font-size: 2em;
-		text-align: left;
-		color: #2b5226;
-	}
-	.itemDescription,
-	.itemPrice {
-		font-size: 1em;
-		text-align: right;
-		color: #2b5226;
-	}
-	#logo {
-		float: left;
-	}
-	#navBar {
-		width: 100%;
-		margin-bottom: 16px;
-		margin-top: 8px;
-	}
-	#hours {
-		text-align: right;
-		font-size: 1.5em;
-	}
-	.time {
-		padding-left: 32px;
-	}
-	#hour-tag {
-		text-decoration: underline;
-		padding-left: 17%;
-	}
-	@media print {
-		.single-heading {
-			display: flex;
-			flex-direction: row;
-			align-items: flex-start;
-			justify-content: flex-start;
-			flex-wrap: wrap;
-		}
-		.single-heading .well {
-			max-width: 33% !important;
-		}
-		.container,
-		container-fluid {
-			width: 100vw;
-		}
-	}
+  body {
+    position: relative;
+}
+.wholeSection {
+    background-color: #97b59b;
+    display: block;
+}
+.heading {
+    font-size: 3em;
+    text-align: right;
+    color: #2b5226;
+}
+.section {
+    font-size: 2.5em;
+    text-align: center;
+    color: #2b5226;
+}
+.itemName {
+    font-size: 2em;
+    text-align: left;
+    color: #2b5226;
+}
+.itemDescription,
+.itemPrice {
+    font-size: 1em;
+    text-align: right;
+    color: #2b5226;
+}
+#logo {
+    float: left;
+}
+#navBar {
+    width: 100%;
+    margin-bottom: 16px;
+    margin-top: 8px;
+}
+#hours {
+    text-align: right;
+    font-size: 1.5em;
+}
+.time {
+    padding-left: 32px;
+}
+#hour-tag {
+    text-decoration: underline;
+    padding-left: 17%;
+}
+@media print {
+    .pagebreak{
+        page-break-before: always;
+    }
+    .single-heading {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    .single-heading .well {
+        max-width: 33% !important;
+    }
+    .container,
+    container-fluid {
+        width: 100vw;
+    }
+    html{
+        background-color: grey;
+    }
+}
 </style>
 </body>

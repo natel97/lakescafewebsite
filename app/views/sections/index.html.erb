@@ -2,7 +2,11 @@
   let navigate = (url) => {
     $(".container").css("opacity", "0");
     $("body").css("background", "url('/wood.jpg')")
+    $("#logo").css("top", "100vh")
     setTimeout(() => window.location = url, 500);
+    setTimeout(() => $('html, body').animate({
+			scrollTop: $('#single-page').offset().top
+		}, 300), 1);
   }
 
   $(document).ready(function () {
@@ -15,13 +19,12 @@
   });
 </script>
 <style>
-  #soups {
+#soups {
     padding: 32px;
     position: relative;
     overflow: hidden;
     display: block;
   }
-  .soup {}
   .soup-image {
     width: 100% !important;
     height: auto;
@@ -86,6 +89,10 @@
     body {
       background-color: transparent;
     }
+    #logo{
+      display: inline-block !important;
+      position: relative;
+    }
   }
   .lakes-cafe-heading {
     display: inline-block;
@@ -121,16 +128,20 @@
     box-shadow: 0 0 45px black;
   }
   #logo {
-    display: inline-block;
+    position: fixed;
+    cursor: pointer;
+    left: 0;
+    top: 0;
+    display: inline;
+    transition: top .8s;
   }
   .container {
     transition: opacity 0.5s;
   }
-</style>
+  </style>
 <div class='container'>
+  <img id="logo" src="lakesCafeLogo.png"></img>
   <div id="contents">
-    <img id="logo" src="lakesCafeLogo.png"></img>
-    <h1 class="lakes-cafe-heading">Lakes Cafe</h1>
     <br/>
     <br/><br/>
 
@@ -222,7 +233,7 @@
                 <% @Soups.each do |soup| %>
                   <div class='col-md-4'>
                     <div class="soup thumbnail">
-                      <%= image_tag(image.image_file_name.nil? ? "/lakesCafeLogo.png" : "/soup--" + soup.id.to_s + "." +  soup.image_file_name.split(".").last, class: "soup-image img-rounded") %>
+                      <%= image_tag(soup.image_file_name.nil? ? "/lakesCafeLogo.png" : "/soup--" + soup.id.to_s + "." +  soup.image_file_name.split(".").last, class: "soup-image img-rounded") %>
                       <h2 class="item-name-on-picture caption"><%= soup.name %></h2>
                     </div>
                   </div>
@@ -264,6 +275,6 @@
                     <%end%>
                   </div>
                 <%end%>
-                <%= link_to("View as single page", onepage_url()) %>
+                <%= link_to("View as single page", onepage_url(), id: 'single-page') %>
               </div>
             </div>

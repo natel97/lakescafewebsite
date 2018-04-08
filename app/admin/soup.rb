@@ -23,11 +23,18 @@ ActiveAdmin.register Soup do
   end
 
   show do |ad|
+    unless ad.image.url(:original) == 'No picture'
+      File.open(Dir.pwd + '/public/soup--' + ad.id.to_s + '.' +  ad.image_file_name.split('.').last, 'wb') do |local|
+        open(ad.image.url(:original)) do |remote|
+          local.write(remote.read)
+        end
+      end
+    end
     attributes_table do
       row :name
       row :is_today
       row :image do
-        image_tag(ad.image.url(:original), style: 'width: 640px; height: 480px;')
+        image_tag('/soup--' + ad.id.to_s + '.' + ad.image_file_name.split('.').last, style: 'width: 640px; height: 480px;')
       end
     end
   end

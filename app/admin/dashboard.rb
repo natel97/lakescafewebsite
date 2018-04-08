@@ -30,11 +30,6 @@ ActiveAdmin.register_page 'Dashboard' do
           panel 'Activate Google Drive!' do
             section do
               div do
-                iframe src: Variable.where(key: 'ACTIVATION_URL').first.value do
-                  a href: Variable.where(key: 'ACTIVATION_URL').first.value.to_s, target: '_blank' do
-                    span 'Click here to activate, paste your value in the AUTHORIZATION_CODE key'
-                  end
-                end
                 a href: Variable.where(key: 'ACTIVATION_URL').first.value.to_s, target: '_blank' do
                   span 'If the above does not display, click here'
                 end
@@ -92,8 +87,8 @@ ActiveAdmin.register_page 'Dashboard' do
         end
       end
       column do
-        panel 'Variables' do
-          section do
+        panel 'Variables', id: 'variables-button', class: 'clickable', onClick: 'openClose()' do
+          section id: 'variables', class: 'hidden-content' do
             form_for :variable, url: '/admin/alter-variables', html: { method: :put } do |f|
               table_for Variable.all do |_variable_fields|
                 fields_for 'variables[variable[]]', _variable_fields do |_var|
@@ -158,7 +153,7 @@ ActiveAdmin.register_page 'Dashboard' do
         panel 'Carousel Images' do
           form_for :carousel_image, url: '/admin/update-images', html: { method: :put } do |f|
             table_for CarouselImage.all do |table|
-              table.column('Image') { |img| image_tag img.image.url(:original), size: '64x48' }
+              table.column('Image') { |img| image_tag (img.image_file_name.nil? ? '/lakesCafeLogo.png' : '/section--' + img.id.to_s + '.' + img.image_file_name.split('.').last), size: '64x48' }
               table.column('Description') { |_img| f.text_field('description[' + _img.id.to_s + ']', value: _img.description) }
               table.column('Visible') { |_img| f.check_box('visible[' + _img.id.to_s + ']', { checked: _img.visible }, 'yes', 'no') }
             end

@@ -1,19 +1,15 @@
 require 'paperclip/media_type_spoof_detector'
-require 'open-uri'
 # Create a new API client & load the Google Drive API
 client = Google::APIClient.new(application_name: 'ppc-gd', application_version: PaperclipGoogleDrive::VERSION)
 drive = client.discovered_api('drive', 'v2')
 
-def getFile (output, input, client)
-  unless (File.file?(output))
-    unless(input == "No picture")
-      client.authorization.fetch_access_token!
-      puts output
-      File.open(output, "wb") do |local|
-        open(input) do |remote|
-          local.write(remote.read)
-        end
-      end
+def get_file(output, input, client)
+  return false if File.file?(output)
+  return false if input == 'No picture'
+  client.authorization.fetch_access_token!
+  File.open(output, 'wb') do |local|
+    open(input) do |remote|
+      local.write(remote.read)
     end
   end
 end
@@ -31,14 +27,14 @@ if x.nil?
 end
 x.value = client.authorization.access_token
 x.save
-Section.where.not(:image_file_name => nil).each do |section|
-  getFile Dir.pwd + "/public/section--" + section.id.to_s + "." + section.image_file_name.split(".").last, section.image.url(:original), client
+Section.where.not(image_file_name: nil).each do |section|
+  get_file Dir.pwd + '/public/section--' + section.id.to_s + '.' + section.image_file_name.split('.').last, section.image.url(:original), client
 end
-CarouselImage.where.not(:image_file_name => nil).each do |image|
-  getFile Dir.pwd + "/public/carousel--" + image.id.to_s + "." + image.image_file_name.split(".").last, image.image.url(:original), client
+CarouselImage.where.not(image_file_name: nil).each do |image|
+  get_file Dir.pwd + '/public/carousel--' + image.id.to_s + '.' + image.image_file_name.split('.').last, image.image.url(:original), client
 end
-Soup.where.not(:image_file_name => nil).each do |soup|
-  getFile Dir.pwd + "/public/soup--" + soup.id.to_s + "." +  soup.image_file_name.split(".").last, soup.image.url(:original), client
+Soup.where.not(image_file_name: nil).each do |soup|
+  get_file Dir.pwd + '/public/soup--' + soup.id.to_s + '.' + soup.image_file_name.split('.').last, soup.image.url(:original), client
 end
 
 module Paperclip
