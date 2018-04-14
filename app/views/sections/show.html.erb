@@ -61,7 +61,7 @@
 		box-shadow: 0 0 20px 6px black;
 		cursor: pointer;
 		transition: height 0.2s, background-size 0.2s;
-		background-image: url("<%= @section.image_file_name.nil? ? "/lakesCafeLogo.png" : "/section--" + @section.id.to_s + "." +  @section.image_file_name.split(".").last %>");
+		background-image: url("<%= image_path(@section.image_file_name.nil? ? "/assets/lakesCafeLogo.png" : "/assets/section--" + @section.id.to_s + "." +  @section.image_file_name.split(".").last) %>");
 		height: 512px;
 		background-attachment: fixed;
 		background-position: center;
@@ -131,9 +131,7 @@
 		setTimeout(() => window.location = url, 500);
 	}
 </script>
-
-	<img onclick="navigate('/')" id="logo" class="can-hide" src="/lakesCafeLogo.png" style="float: left;"></img>
-
+<%= image_tag('lakesCafeLogo.png', id: 'logo', class: 'can-hide', onclick: "navigate('/')", style: 'float: left;') %>
 <div id="space"></div>
 <div id="scroll-to-me"></div>
 <div class="can-hide" style="text-align: center; height:256px;">
@@ -201,7 +199,7 @@
 								<% a = 0 %><% end %>
 								<div class="col-md-4">
 									<div class="thumbnail" onclick="navigate('<%= section_path(section) %>')">
-										<img src="<%= section.image_file_name.nil? ? "/lakesCafeLogo.png" : "/section--" + section.id.to_s + "." +  section.image_file_name.split(".").last %>" class="setFixed img-rounded"></img>
+										<%= image_tag(section.image_file_name.nil? ? "lakesCafeLogo.png" : "section--" + section.id.to_s + "." +  section.image_file_name.split(".").last, class: "setFixed img-rounded") %>
 										<div class="item-name-on-picture caption">
 											<h3 style="text-align: center;"><%= section.name %></h3>
 										</div>

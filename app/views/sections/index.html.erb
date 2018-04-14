@@ -1,7 +1,8 @@
 <script>
   let navigate = (url) => {
-    $(".container").css("opacity", "0");
-    $("body").css("background", "url('/wood.jpg')")
+    $("#contents").css("transition", "opacity .5s")
+    $("#contents").css("opacity", "0")
+    $("body").css("background", "image-url('/assets/wood.jpg')")
     $("#logo").css("top", "100vh")
     setTimeout(() => window.location = url, 500);
     setTimeout(() => $('html, body').animate({
@@ -9,10 +10,12 @@
 		}, 300), 1);
   }
 
-  $(document).ready(function () {
-    $("#contents").css("opacity", "1");
-    $("#contents").css("top", "-" + $("#contents").height() + "px");
+  $(window).on("load", function() {
+    $("#loading-info").css("display", "none");
+    $("#contents").css("display", "block");
+    $("#contents").css("top", "-" + $("#contents").height()/5 + "px");
     setTimeout(() => $(".container").css("top", "0px"), 1000);
+    setTimeout(() => $("#contents").css("opacity", "1"), 200);
     $("#contents").animate({
       top: "0px"
     }, 1000)
@@ -48,6 +51,9 @@
   }
   #contents {
     position: relative;
+    display: none;
+    opacity: 0;
+    transition: opacity 2s;
   }
   .setFixed {
     width: auto;
@@ -76,8 +82,8 @@
     width: 100%;
   }
   .container,
-  container-fluid {
-    background-image: url("/wood.jpg");
+  container-fluid {    
+    background-image: url("<%= image_path('wood.jpg') %>");
     min-width: 75vw;
     padding: 128px;
   }
@@ -137,9 +143,20 @@
   .container {
     transition: opacity 0.5s;
   }
+  #loading-info{
+    padding-top: 33vh;
+    padding-bottom: 33vh;
+    color: #a19d9a;
+    font-size: 2em;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
   </style>
 <div class='container'>
-  <img id="logo" src="lakesCafeLogo.png"></img>
+  <%= image_tag('lakesCafeLogo.png', id: 'logo' )%>
+  <div id="loading-info">
+    Please wait while we serve you our freshest items!
+  </div>
   <div id="contents">
     <br/>
     <br/><br/>
@@ -163,7 +180,7 @@
                   <% else %>
                     <div class="carousel-item item">
                     <% end %>
-                    <img class="d-block img-fluid carousel-image" src="<%= image.image_file_name.nil? ? "/lakesCafeLogo.png" : "/carousel--" + image.id.to_s + "." +  image.image_file_name.split(".").last %>" alt="Image not found">
+                    <%= image_tag(image.image_file_name.nil? ? "lakesCafeLogo.png" : "carousel--" + image.id.to_s + "." +  image.image_file_name.split(".").last, class: 'd-block img-fluid carousel-image', alt: 'Image not found') %>
                     <% if !image.description.empty? %>
                       <div class="carousel-caption d-none d-md-block c-desc">
                         <h3><%= image.description %></h3>
@@ -267,7 +284,7 @@
                       <% a = 0 %><% end %>
                       <div class="col-md-4">
                         <div class="thumbnail" onclick="navigate('<%= section_path(section) %>')">
-                          <img src="<%= section.image_file_name.nil? ? "/lakesCafeLogo.png" : "/section--" + section.id.to_s + "." +  section.image_file_name.split(".").last %>" class="img-rounded"></img>
+                        <%= image_tag(section.image_file_name.nil? ? "lakesCafeLogo.png" : "section--" + section.id.to_s + "." +  section.image_file_name.split(".").last, class: "img-rounded") %>
                           <h2 class="item-name-on-picture caption"><%= section.name %></h2>
                         </div>
                       </div>

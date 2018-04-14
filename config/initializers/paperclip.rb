@@ -28,13 +28,13 @@ end
 x.value = client.authorization.access_token
 x.save
 Section.where.not(image_file_name: nil).each do |section|
-  get_file Dir.pwd + '/public/section--' + section.id.to_s + '.' + section.image_file_name.split('.').last, section.image.url(:original), client
+  get_file Dir.pwd + '\app\assets\images\section--' + section.id.to_s + '.' + section.image_file_name.split('.').last, section.image.url(:original), client
 end
 CarouselImage.where.not(image_file_name: nil).each do |image|
-  get_file Dir.pwd + '/public/carousel--' + image.id.to_s + '.' + image.image_file_name.split('.').last, image.image.url(:original), client
+  get_file Dir.pwd + '\app\assets\images\carousel--' + image.id.to_s + '.' + image.image_file_name.split('.').last, image.image.url(:original), client
 end
 Soup.where.not(image_file_name: nil).each do |soup|
-  get_file Dir.pwd + '/public/soup--' + soup.id.to_s + '.' + soup.image_file_name.split('.').last, soup.image.url(:original), client
+  get_file Dir.pwd + '\app\assets\images\soup--' + soup.id.to_s + '.' + soup.image_file_name.split('.').last, soup.image.url(:original), client
 end
 
 module Paperclip

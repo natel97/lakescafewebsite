@@ -31,7 +31,7 @@
       padding: 24px;
     }
     body {
-      background-image: url("/wood.jpg");
+      background-image: url("<%= image_path('wood.jpg') %>");
       max-width: 100vw;
     }
     .row {
@@ -81,7 +81,6 @@
     <script>
       $("body").css("background-position", "0px " + (window.localStorage.getItem("position") + "px"));
       window.addEventListener("beforeunload", () => {
-        console.log((window.pageYOffset % 256) - (document.documentElement.clientTop));
         window.localStorage.setItem("position", (window.pageYOffset % 256) - (document.documentElement.clientTop));
       });
     </script>

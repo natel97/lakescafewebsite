@@ -153,7 +153,7 @@ ActiveAdmin.register_page 'Dashboard' do
         panel 'Carousel Images' do
           form_for :carousel_image, url: '/admin/update-images', html: { method: :put } do |f|
             table_for CarouselImage.all do |table|
-              table.column('Image') { |img| image_tag (img.image_file_name.nil? ? '/lakesCafeLogo.png' : '/section--' + img.id.to_s + '.' + img.image_file_name.split('.').last), size: '64x48' }
+              table.column('Image') { |img| image_tag((img.image_file_name.nil? ? 'lakesCafeLogo.png' : 'carousel--' + img.id.to_s + '.' + img.image_file_name.split('.').last), size: '64x48') }
               table.column('Description') { |_img| f.text_field('description[' + _img.id.to_s + ']', value: _img.description) }
               table.column('Visible') { |_img| f.check_box('visible[' + _img.id.to_s + ']', { checked: _img.visible }, 'yes', 'no') }
             end
