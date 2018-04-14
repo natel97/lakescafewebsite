@@ -35,7 +35,7 @@ ActiveAdmin.register Section do
     attributes_table do
       row :name
       row :image do
-        image_tag('section--' + ad.id.to_s + '.' + ad.image_file_name.split('.').last, style: 'width: 640px; height: 480px;')
+        image_tag('/section--' + ad.id.to_s + '.' + ad.image_file_name.split('.').last, style: 'width: 640px; height: 480px;')
       end
     end
   end

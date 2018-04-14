@@ -180,7 +180,7 @@
                   <% else %>
                     <div class="carousel-item item">
                     <% end %>
-                    <%= image_tag(image.image_file_name.nil? ? "lakesCafeLogo.png" : "carousel--" + image.id.to_s + "." +  image.image_file_name.split(".").last, class: 'd-block img-fluid carousel-image', alt: 'Image not found') %>
+                    <%= image_tag(image.image_file_name.nil? ? "lakesCafeLogo.png" : "/carousel--" + image.id.to_s + "." +  image.image_file_name.split(".").last, class: 'd-block img-fluid carousel-image', alt: 'Image not found') %>
                     <% if !image.description.empty? %>
                       <div class="carousel-caption d-none d-md-block c-desc">
                         <h3><%= image.description %></h3>
@@ -284,7 +284,7 @@
                       <% a = 0 %><% end %>
                       <div class="col-md-4">
                         <div class="thumbnail" onclick="navigate('<%= section_path(section) %>')">
-                        <%= image_tag(section.image_file_name.nil? ? "lakesCafeLogo.png" : "section--" + section.id.to_s + "." +  section.image_file_name.split(".").last, class: "img-rounded") %>
+                        <%= image_tag(section.image_file_name.nil? ? "lakesCafeLogo.png" : "/section--" + section.id.to_s + "." +  section.image_file_name.split(".").last, class: "img-rounded") %>
                           <h2 class="item-name-on-picture caption"><%= section.name %></h2>
                         </div>
                       </div>

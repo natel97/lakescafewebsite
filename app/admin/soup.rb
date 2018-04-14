@@ -34,7 +34,7 @@ ActiveAdmin.register Soup do
       row :name
       row :is_today
       row :image do
-        image_tag('soup--' + ad.id.to_s + '.' + ad.image_file_name.split('.').last, style: 'width: 640px; height: 480px;')
+        image_tag('/soup--' + ad.id.to_s + '.' + ad.image_file_name.split('.').last, style: 'width: 640px; height: 480px;')
       end
     end
   end

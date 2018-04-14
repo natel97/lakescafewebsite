@@ -33,7 +33,7 @@ ActiveAdmin.register CarouselImage do
       row :description
       row :visible
       row :image do
-        image_tag("carousel--" + ad.id.to_s + "." + ad.image_file_name.split('.').last, style: 'width: 640px; height: 480px;')
+        image_tag("/carousel--" + ad.id.to_s + "." + ad.image_file_name.split('.').last, style: 'width: 640px; height: 480px;')
       end
     end
   end
