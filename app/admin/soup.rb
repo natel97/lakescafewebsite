@@ -25,7 +25,7 @@ ActiveAdmin.register Soup do
   show do |ad|
     attributes_table do
       unless ad.image.url(:original) == 'No picture'
-        File.open(Dir.pwd + 'app\assets\images\soup--' + ad.id.to_s + '.' +  ad.image_file_name.split('.').last, 'wb') do |local|
+        File.open(Dir.pwd + '\assets\images\soup--' + ad.id.to_s + '.' +  ad.image_file_name.split('.').last, 'wb') do |local|
           open(ad.image.url(:original)) do |remote|
             local.write(remote.read)
           end
