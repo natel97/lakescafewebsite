@@ -4,13 +4,17 @@ client = Google::APIClient.new(application_name: 'ppc-gd', application_version: 
 drive = client.discovered_api('drive', 'v2')
 
 def get_file(output, input, client)
-  return false if File.file?(output)
-  return false if input == 'No picture'
-  client.authorization.fetch_access_token!
-  File.open(output, 'wb') do |local|
-    open(input) do |remote|
-      local.write(remote.read)
+  begin
+    return false if File.file?(output)
+    return false if input == 'No picture'
+    client.authorization.fetch_access_token!
+    File.open(output, 'wb') do |local|
+      open(input) do |remote|
+        local.write(remote.read)
+      end
     end
+  rescue Exception => error
+    puts error
   end
 end
 
