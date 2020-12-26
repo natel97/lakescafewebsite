@@ -1,25 +1,30 @@
-# README
+# Lakes Cafe Website
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A website developed for a small-town cafe.
+See the demo [here](http://lakescafe.herokuapp.com)
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+- Upload images via Google Drive for persistent storage
+- Customize the menu in the format of Heading -> Section -> Item -> SubItem
+- Toggle soups for each day
+- Set a special for the day
+- Set images for the carousel
+- JSON API endpoints for external use
 
-* System dependencies
+## Screenshots
 
-* Configuration
+### Menu Page
 
-* Database creation
+<img src="./screenshots/cafe-lunch.png" width="600">
+<img src="./screenshots/main-mobile.png" width="200">
 
-* Database initialization
+## Browse a Category
 
-* How to run the test suite
+<img src="./screenshots/burgers.png" width="600">
+<img src="./screenshots/burgers-mobile.png" width="200">
 
-* Services (job queues, cache servers, search engines, etc.)
+## Administration Dashboard
 
-* Deployment instructions
-
-* ...
-"# lakescafewebsite" 
+Implementation of ActiveAdmin
+<img src="./screenshots/admin.png">
